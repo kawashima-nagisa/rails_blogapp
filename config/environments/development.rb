@@ -4,7 +4,7 @@ Rails.application.configure do
   config.assets.debug = true
   config.assets.compile = true
   config.assets.check_precompiled_asset = false
-  
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded any time

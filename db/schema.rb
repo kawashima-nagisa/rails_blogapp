@@ -18,5 +18,4 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_13_140530) do
     t.datetime "updated_at", null: false
     t.integer "views", default: 0
   end
-
 end

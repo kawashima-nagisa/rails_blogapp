@@ -1,9 +1,7 @@
 require "test_helper"
 
 class PostsControllerTest < ActionDispatch::IntegrationTest
-  setup do
-    @post = posts(:one)
-  end
+  setup { @post = posts(:one) }
 
   test "should get index" do
     get posts_url
@@ -34,14 +32,18 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update post" do
-    patch post_url(@post), params: { post: { body: @post.body, title: @post.title } }
+    patch post_url(@post),
+          params: {
+            post: {
+              body: @post.body,
+              title: @post.title
+            }
+          }
     assert_redirected_to post_url(@post)
   end
 
   test "should destroy post" do
-    assert_difference("Post.count", -1) do
-      delete post_url(@post)
-    end
+    assert_difference("Post.count", -1) { delete post_url(@post) }
 
     assert_redirected_to posts_url
   end

@@ -1,9 +1,7 @@
 require "application_system_test_case"
 
 class PostsTest < ApplicationSystemTestCase
-  setup do
-    @post = posts(:one)
-  end
+  setup { @post = posts(:one) }
 
   test "visiting the index" do
     visit posts_url

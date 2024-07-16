@@ -20,7 +20,7 @@
             Dropdown
           </a>
           <ul class="dropdown-menu">
-           
+
             <li><%= link_to "Posts", posts_path, class: "dropdown-item" %></li>
             <li><%= link_to "New Posts", new_post_path, class: "dropdown-item" %></li>
             <li>  <%= link_to "Home", root_path, class: "dropdown-item" %></li>
@@ -28,10 +28,10 @@
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </li>
-     
+
       </ul>
       <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" autocomplete="off">
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
     </div>
