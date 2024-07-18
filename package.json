@@ -5,8 +5,8 @@
   "dependencies": {
     "prettier": "^3.3.3"
   },
-   "scripts": {
+  "scripts": {
     "prettier": "prettier --write '**/*.rb'",
-    "erblint": "bundle exec erblint -a app/views"
+    "erblint": "erblint --lint-all -a"
   }
 }

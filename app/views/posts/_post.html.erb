@@ -1,9 +1,9 @@
 <div id="<%= dom_id post %>">
   <h2>
     <%= post.title %>
-    <%= pluralize(post.views, "view") %>
   </h2>
 
+  <h5>Posted by <%= link_to post.user.name, user_path(post.user) %></h5><span> <%= pluralize(post.views, "view") %></span>
   <div>
     <%= post.body %>
   </div>
