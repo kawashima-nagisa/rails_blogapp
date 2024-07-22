@@ -22,4 +22,5 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "pages#home"
+   delete 'notifications/:id', to: 'application#destroy_notification', as: 'destroy_notification'
 end

@@ -4,20 +4,19 @@ class Comment < ApplicationRecord
 
   has_rich_text :body
 
-  
   after_create_commit :notify_recipient
   before_destroy :cleanup_notifications
   has_noticed_notifications model_name: 'Notification'
 
-  private 
-
+  private
 
   def notify_recipient
+     Rails.logger.debug "Creating notification for post user: #{post.user.id}"
+     return if post.user == user
     CommentNotification.with(comment: self, post: post).deliver_later(post.user)
   end
 
   def cleanup_notifications
-    notification_as_comment.destroy_all
+    notifications_as_comment.destroy_all
   end
-
 end
