@@ -79,4 +79,5 @@ gem "bootstrap", "~> 5.3"
 
 gem "sassc-rails", "~> 2.1"
 gem 'devise'
+gem 'noticed', '~> 1.5'
 

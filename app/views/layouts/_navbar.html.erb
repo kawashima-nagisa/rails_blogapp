@@ -15,7 +15,9 @@
         <li class="nav-item">
           <%= link_to "Posts", posts_path, class: "nav-link" %>
         </li>
+        <%= render 'layouts/notifications'%>
         <%= render 'user/session_manager' %>
+
       </ul>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" autocomplete="off">
