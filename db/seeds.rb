@@ -9,6 +9,13 @@
 #   end
 User.create(
   email: "hoge@example.com",
+  name: "hoge hoge",
+  password: "password",
+  password_confirmation: "password"
+)
+User.create(
+  email: "hoge2@example.com",
+  name: "hoge2 hoge2",
   password: "password",
   password_confirmation: "password"
 )
