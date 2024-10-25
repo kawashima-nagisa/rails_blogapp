@@ -81,3 +81,5 @@ gem "sassc-rails", "~> 2.1"
 gem 'devise'
 gem 'noticed', '~> 1.5'
 
+
+gem "ransack", "~> 4.2"

@@ -1,5 +1,11 @@
 class ApplicationController < ActionController::Base
    before_action :set_notifications, if: :current_user
+   before_action :set_query
+
+
+  def set_query
+     @q = Post.ransack(params[:q])
+  end
 
 
    def destroy_notification
