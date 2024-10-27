@@ -20,15 +20,11 @@ User.create(
   password_confirmation: "password"
 )
 
-
-
-
 Category.create(name: "PHP")
 Category.create(name: "Java")
 Category.create(name: "Next.js")
 Category.create(name: "Rails")
 Category.create(name: "Apex")
-
 
 # 記事の作成とランダムカテゴリの割り当て
 10.times do |x|

@@ -8,7 +8,6 @@ class Post < ApplicationRecord
   has_noticed_notifications model_name: "Notification"
   has_many :notifications, through: :user
 
-
   belongs_to :category
 
   # Ransackの検索可能属性を定義
