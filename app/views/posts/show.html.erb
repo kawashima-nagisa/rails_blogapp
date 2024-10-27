@@ -1,5 +1,6 @@
 <div class="container">
-  <%= render @post %>
+ <%= render partial: "post", locals: { post: @post, show_full_content: @show_full_content } %>
+
 
   <div>
     <%= link_to "Edit this post", edit_post_path(@post) %> |

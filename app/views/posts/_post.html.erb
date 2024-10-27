@@ -1,11 +1,24 @@
-<div id="<%= dom_id post %>">
+<div id="<%= dom_id(post) %>">
   <h2>
     <%= post.title %>
   </h2>
 
-  <h5>Posted by <%= link_to post.user.name, user_path(post.user) %></h5><span> <%= pluralize(post.views, "view") %></span>
+  <h5>Posted by <%= link_to post.user.name, user_path(post.user) %></h5>
+  <span> <%= pluralize(post.views, "view") %></span>
+
   <div>
-    <%= post.body %>
+    記事の内容: 
+    <% if defined?(show_full_content) && show_full_content %>
+      <%= post.body %>
+    <% else %>
+      <%= truncate(post.body, length: 30) %>
+      <% if post.body.length > 30 %>
+        <%= link_to '続きを表示する', post_path(post.id) %>
+      <% else %>
+        <%= link_to '記事の詳細へ', post_path(post.id) %>
+      <% end %>
+    <% end %>
   </div>
 
+  <div>カテゴリー名: <%= post.category&.name %></div>
 </div>

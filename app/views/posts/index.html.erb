@@ -6,10 +6,9 @@
 
   <div id="posts">
     <% @posts.each do |post| %>
-      <%= render post %>
-      <p>
-        <%= link_to "記事の詳細へ", post %>
-      </p>
+      <%= render partial: "post", locals: { post: post, show_full_content: @show_full_content } %>
+
+   
     <% end %>
   </div>
 

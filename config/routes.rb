@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     resources :comments
   end
 
+  resources :categories, only: %i[index new create edit update destroy]
+
   # get 'pages/home', to: 'pages#home'
   get "about", to: "pages#about"
 
@@ -28,3 +30,9 @@ Rails.application.routes.draw do
     to: "application#destroy_notification",
     as: "destroy_notification"
 end
+
+
+
+
+
+
