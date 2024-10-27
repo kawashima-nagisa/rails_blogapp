@@ -1,0 +1,49 @@
+name: Tests
+
+on:
+  pull_request:
+    branches:
+      - "*"
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: password
+        ports: ["5432:5432"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler: default
+          bundler-cache: true
+          ruby-version: .ruby-version
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          cache: yarn
+      - run: node --version
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update && sudo apt-get install -y -qq libvips
+          yarn install
+          bundle install
+
+      - name: Run Lint Checks
+        run: yarn lint
+
+      - name: Brakeman Check
+        run: bundle exec brakeman
