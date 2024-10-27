@@ -59,7 +59,9 @@ group :development do
   gem 'syntax_tree'
   gem 'syntax_tree-haml'
   gem 'syntax_tree-rbs'
-  gem 'erb_lint'
+  gem "erb_lint", require: false
+  gem "standard", require: false
+  gem "brakeman", require: false
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'search', to: "search#index"
+  get "search", to: "search#index"
   get "users/profile"
   devise_for :users,
              controllers: {
@@ -23,5 +23,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "pages#home"
-   delete 'notifications/:id', to: 'application#destroy_notification', as: 'destroy_notification'
+  delete "notifications/:id",
+         to: "application#destroy_notification",
+         as: "destroy_notification"
 end
