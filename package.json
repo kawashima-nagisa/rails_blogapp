@@ -10,7 +10,7 @@
   },
   "scripts": {
     "prettier": "prettier --write '**/*.rb'",
-    "erblint": "bundle exec erb_lint --lint-all -a app/views --exclude 'vendor/**/*' --exclude 'node_modules/**/*'",
+    "erblint": "bundle exec erb_lint --lint-all -a app/views",
     "lint": "concurrently \"npm run prettier\" \"npm run erblint\""
   }
 }
