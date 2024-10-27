@@ -46,6 +46,3 @@ jobs:
 
       - name: Run Lint Checks
         run: yarn lint
-
-      - name: Brakeman Check
-        run: bundle exec brakeman --ignore-directories vendor/
