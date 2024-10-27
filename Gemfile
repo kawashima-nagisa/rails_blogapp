@@ -55,12 +55,6 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
-  gem 'prettier_print'
-  gem 'syntax_tree'
-  gem 'syntax_tree-haml'
-  gem 'syntax_tree-rbs'
-  gem "erb_lint", require: false
-  gem "standard", require: false
   gem "brakeman", require: false
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
