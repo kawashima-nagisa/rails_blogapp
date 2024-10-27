@@ -27,7 +27,7 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
-gem 'parser', '~> 3.1.2'
+gem "parser", "~> 3.1.2"
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
@@ -39,7 +39,7 @@ gem 'parser', '~> 3.1.2'
 # gem "bcrypt", "~> 3.1.7"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem "tzinfo-data", platforms: %i[ mswin mswin64 mingw x64_mingw jruby ]
+gem "tzinfo-data", platforms: %i[mswin mswin64 mingw x64_mingw jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
@@ -49,14 +49,18 @@ gem "image_processing", "~> 1.2"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "debug", platforms: %i[ mri mswin mswin64 mingw x64_mingw ]
+  gem "debug", platforms: %i[mri mswin mswin64 mingw x64_mingw]
 end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
-  gem 'erb_lint', require: false
-  gem 'syntax_tree'
+  gem "erb_lint", require: false
+
+  gem "brakeman", require: false
+  gem "standard", require: false
+  gem "better_errors"
+  gem "syntax_tree"
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 
@@ -75,8 +79,7 @@ end
 gem "bootstrap", "~> 5.3"
 
 gem "sassc-rails", "~> 2.1"
-gem 'devise'
-gem 'noticed', '~> 1.5'
-
+gem "devise"
+gem "noticed", "~> 1.5"
 
 gem "ransack", "~> 4.2"

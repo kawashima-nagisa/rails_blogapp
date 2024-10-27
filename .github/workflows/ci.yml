@@ -21,15 +21,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-
-      - name: Clear cache
-        uses: actions/cache@v3
-        with:
-          path: vendor/bundle
-          key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-gem-
-
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
@@ -37,24 +28,19 @@ jobs:
           bundler-cache: true
           ruby-version: .ruby-version
 
-      - name: Update Bundler
-        run: gem install bundler
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: .node-version
-          cache: yarn
-      - run: node --version
-
       - name: Remove vendor directory if necessary
         run: rm -rf vendor
 
       - name: Install dependencies
         run: |
           sudo apt-get update && sudo apt-get install -y -qq libvips
-          yarn install
           bundle install
 
-      - name: Run Lint Checks
-        run: yarn lint
+      - name: Standardrb Check
+        run: bundle exec standardrb
+
+      - name: ERB Lint
+        run: bundle exec erblint --lint-all
+
+      - name: Brakeman Check
+        run: bundle exec brakeman

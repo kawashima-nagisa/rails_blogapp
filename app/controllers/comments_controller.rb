@@ -8,11 +8,10 @@ class CommentsController < ApplicationController
 
     if @comment.save
       flash[:notice] = "コメントを作成しました。"
-      redirect_to post_path(@post)
     else
       flash[:alert] = "コメントの作成に失敗しました。"
-      redirect_to post_path(@post)
     end
+    redirect_to post_path(@post)
   end
 
   def destroy
