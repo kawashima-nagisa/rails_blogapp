@@ -29,6 +29,9 @@ jobs:
           bundler-cache: true
           ruby-version: .ruby-version
 
+      - name: Update Bundler
+        run: gem install bundler
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
