@@ -8,6 +8,9 @@ class Post < ApplicationRecord
   has_noticed_notifications model_name: "Notification"
   has_many :notifications, through: :user
 
+
+  belongs_to :category
+
   # Ransackの検索可能属性を定義
   def self.ransackable_attributes(auth_object = nil)
     %w[title body created_at updated_at user_id]
@@ -15,6 +18,6 @@ class Post < ApplicationRecord
 
   # 関連モデル（User）の属性を使う場合
   def self.ransackable_associations(auth_object = nil)
-    ["user"]
+    ["user", "category"]
   end
 end

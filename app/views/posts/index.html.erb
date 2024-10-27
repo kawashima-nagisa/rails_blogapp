@@ -1,17 +1,17 @@
 <p style="color: green"><%= notice %></p>
 <div class="container">
 
-  <h1>Posts</h1>
+  <h1>投稿された記事一覧</h1>
   <div id="posts"></div>
 
   <div id="posts">
     <% @posts.each do |post| %>
       <%= render post %>
       <p>
-        <%= link_to "Show this post", post %>
+        <%= link_to "記事の詳細へ", post %>
       </p>
     <% end %>
   </div>
 
-  <%= link_to "New post", new_post_path %>
+  <%= link_to "新しい記事を作成する", new_post_path %>
 </div>

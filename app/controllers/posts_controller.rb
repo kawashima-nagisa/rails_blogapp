@@ -80,7 +80,7 @@ class PostsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def post_params
-    params.require(:post).permit(:title, :body, :name)
+    params.require(:post).permit(:title, :body, :name, :category_id)
   end
 
   def mark_notification_as_read

@@ -1,5 +1,5 @@
 <%= search_form_for(@q, url: search_path, method: :get, class: 'd-flex') do |f| %>
-  <%= f.search_field :title_or_body_or_user_email_or_user_name_cont_any, placeholder: "検索キーワードを入力", class: 'form-control me-2' %>
+  <%= f.search_field :title_or_body_or_user_email_or_user_name_or_category_name_cont_any, placeholder: "検索キーワードを入力", class: 'form-control me-2' %>
 
   <!-- 開始日フィールド -->
   <%= f.label :created_at_gteq, "投稿開始日" %>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :categories
   get "search", to: "search#index"
   get "users/profile"
   devise_for :users,
