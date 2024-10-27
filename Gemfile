@@ -57,7 +57,7 @@ group :development do
   gem "web-console"
   gem "brakeman", require: false
   gem 'erb_lint', require: false
-
+  gem 'syntax_tree'
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 
