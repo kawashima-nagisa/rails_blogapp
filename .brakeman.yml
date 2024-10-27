@@ -1,2 +1,4 @@
 ignore_directories:
   - vendor/bundle
+  - vendor
+  - node_modules

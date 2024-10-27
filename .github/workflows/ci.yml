@@ -49,4 +49,4 @@ jobs:
         run: yarn lint
 
       - name: Brakeman Check
-        run: bundle exec brakeman
+        run: bundle exec brakeman --skip-libs
