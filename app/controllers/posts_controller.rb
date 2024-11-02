@@ -22,50 +22,68 @@ class PostsController < ApplicationController
 
   # GET /posts/new
   def new
-  @post = Post.new
-  respond_to do |format|
-    format.html { render :new }
-    format.turbo_stream { render :new } # Turboフレームでリクエストされた場合
+    @post = Post.new
   end
-end
   # GET /posts/1/edit
   def edit
-    respond_to do |format|
-    format.html { render :new }
-    format.turbo_stream { render :new } # Turboフレームでリクエストされた場合
-  end
   end
 
   # POST /posts or /posts.json
   def create
-  @post = Post.new(post_params)
-  @post.user = current_user
+    @post = Post.new(post_params)
+    @post.user = current_user
 
-  if @post.save
-    flash.now[:notice] = "投稿が成功しました"
-    render turbo_stream: [
-      turbo_stream.prepend("posts", partial: "post", locals: { post: @post }),
-      turbo_stream.replace("modal", ""), # 成功時にモーダルを閉じる
-      turbo_stream.update("flash", partial: "layouts/flash") # フラッシュメッセージを表示
-    ]
-  else
-    render turbo_stream: turbo_stream.replace("modal", partial: "posts/error", locals: { post: @post }), status: :unprocessable_entity
+    if @post.save
+      flash.now[:notice] = "投稿が成功しました"
+      render turbo_stream: [
+               turbo_stream.prepend(
+                 "posts",
+                 partial: "post",
+                 locals: {
+                   post: @post
+                 }
+               ),
+               turbo_stream.replace("modal", ""), # 成功時にモーダルを閉じる
+               turbo_stream.update("flash", partial: "layouts/flash") # フラッシュメッセージを表示
+             ]
+    else
+      render turbo_stream:
+               turbo_stream.replace(
+                 "modal",
+                 partial: "posts/error",
+                 locals: {
+                   post: @post
+                 }
+               ),
+             status: :unprocessable_entity
+    end
   end
-end
-
 
   # PATCH/PUT /posts/1 or /posts/1.json
   def update
-    respond_to do |format|
-      if @post.update(post_params)
-        format.html do
-          redirect_to post_url(@post), notice: "Post was successfully updated."
-        end
-        format.json { render :show, status: :ok, location: @post }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
+    if @post.update(post_params)
+      flash.now[:notice] = "更新が成功しました"
+      render turbo_stream: [
+               turbo_stream.replace(
+                 "post_#{@post.id}",
+                 partial: "post",
+                 locals: {
+                   post: @post
+                 }
+               ),
+               turbo_stream.replace("modal", ""), # 成功時にモーダルを閉じる
+               turbo_stream.update("flash", partial: "layouts/flash") # フラッシュメッセージを表示
+             ]
+    else
+      render turbo_stream:
+               turbo_stream.replace(
+                 "modal",
+                 partial: "posts/error",
+                 locals: {
+                   post: @post
+                 }
+               ),
+             status: :unprocessable_entity
     end
   end
 

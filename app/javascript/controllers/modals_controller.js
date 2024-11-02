@@ -2,18 +2,17 @@ import { Controller } from "@hotwired/stimulus";
 
 // Connects to data-controller="modals"
 export default class extends Controller {
-  connect() {}
   close(e) {
-    // Prevent default action
     e.preventDefault();
-    // Remove from parent
     const modal = document.getElementById("modal");
-    modal.innerHTML = "";
 
-    // Remove the src attribute from the modal
-    modal.removeAttribute("src");
-
-    // Remove complete attribute
-    modal.removeAttribute("complete");
+    if (modal) {
+      modal.innerHTML = "";
+      modal.removeAttribute("src"); // src属性の削除（Turboフレームをリセット）
+      modal.removeAttribute("complete"); // complete属性の削除
+      setTimeout(() => {
+        window.location.reload();
+      }, 100);
+    }
   }
 }
