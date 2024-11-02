@@ -38,21 +38,21 @@ end
 
   # POST /posts or /posts.json
   def create
-    @post = Post.new(post_params)
-    @post.user = current_user
+  @post = Post.new(post_params)
+  @post.user = current_user
 
-    respond_to do |format|
-      if @post.save
-        format.html do
-          redirect_to post_url(@post), notice: "Post was successfully created."
-        end
-        format.json { render :show, status: :created, location: @post }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
-    end
+  if @post.save
+    flash.now[:notice] = "投稿が成功しました"
+    render turbo_stream: [
+      turbo_stream.prepend("posts", partial: "post", locals: { post: @post }),
+      turbo_stream.replace("modal", ""), # 成功時にモーダルを閉じる
+      turbo_stream.update("flash", partial: "layouts/flash") # フラッシュメッセージを表示
+    ]
+  else
+    render turbo_stream: turbo_stream.replace("modal", partial: "posts/error", locals: { post: @post }), status: :unprocessable_entity
   end
+end
+
 
   # PATCH/PUT /posts/1 or /posts/1.json
   def update
