@@ -6,3 +6,11 @@ import "bootstrap";
 import "trix";
 import "@rails/actiontext";
 import "controllers";
+
+document.addEventListener("turbo:frame-missing", (event) => {
+  const {
+    detail: { response, visit },
+  } = event;
+  event.preventDefault();
+  visit(response.url); // 現在のURLにリダイレクト
+});
