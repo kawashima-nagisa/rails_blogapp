@@ -1,12 +1,16 @@
-<div class="container">
-  <h1>New post</h1>
+<%= turbo_frame_tag "modal" do %>
+  <div class="modal">
+    <h1>新しい投稿</h1>
+    <%= render "form", post: @post %>
+    
+    <br>
 
-  <%= render "form", post: @post %>
-
-  <br>
-
-  <div>
-    <%= link_to "Back to posts", posts_path %>
+    <!-- キャンセルボタン -->
+    <div>
+      <%= link_to "キャンセル", "#", data: {
+          controller: "modals",
+          action: "modals#close"
+        }, class: "cancel-button" %>
+    </div>
   </div>
-
-</div>
+<% end %>

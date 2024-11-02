@@ -22,9 +22,12 @@ class PostsController < ApplicationController
 
   # GET /posts/new
   def new
-    @post = Post.new
+  @post = Post.new
+  respond_to do |format|
+    format.html { render :new }
+    format.turbo_stream { render :new } # Turboフレームでリクエストされた場合
   end
-
+end
   # GET /posts/1/edit
   def edit
   end
