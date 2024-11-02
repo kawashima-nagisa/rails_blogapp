@@ -1,7 +1,6 @@
 <div class="container">
  <%= render partial: "post", locals: { post: @post, show_full_content: @show_full_content } %>
 
-
   <div>
    <%= link_to "Edit this post", edit_post_path(@post), data: { turbo_frame: "modal" } %> |
     <%= link_to "Back to posts", posts_path %>

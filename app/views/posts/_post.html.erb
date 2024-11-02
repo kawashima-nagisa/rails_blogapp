@@ -7,7 +7,7 @@
   <span> <%= pluralize(post.views, "view") %></span>
 
   <div>
-    記事の内容: 
+    記事の内容:
     <% if defined?(show_full_content) && show_full_content %>
       <%= post.body %>
     <% else %>

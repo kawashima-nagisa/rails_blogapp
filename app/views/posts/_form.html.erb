@@ -9,7 +9,7 @@
         </ul>
       </div>
     <% end %>
-  
+
   <div>
     <%= form.label :title, style: "display: block" %>
     <%= form.text_field :title %>
@@ -26,11 +26,7 @@
   </div>
 
   <div>
-   
+
    <%= form.submit post.persisted? ? "Update Post" : "Create Post", class: "btn btn-primary" %>
   </div>
 <% end %>
-
-
-
-   

@@ -30,9 +30,3 @@ Rails.application.routes.draw do
     to: "application#destroy_notification",
     as: "destroy_notification"
 end
-
-
-
-
-
-
