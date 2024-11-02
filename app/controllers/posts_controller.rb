@@ -30,6 +30,10 @@ class PostsController < ApplicationController
 end
   # GET /posts/1/edit
   def edit
+    respond_to do |format|
+    format.html { render :new }
+    format.turbo_stream { render :new } # Turboフレームでリクエストされた場合
+  end
   end
 
   # POST /posts or /posts.json
