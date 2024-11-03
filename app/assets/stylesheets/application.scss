@@ -108,3 +108,17 @@
   outline: none;
   box-shadow: 0 0 0 1px #3b82f6;
 }
+
+trix-editor [data-trix-mutable].attachment img {
+  width: 300px;
+  height: auto;
+}
+.trix-content img {
+  width: 300px;
+  height: auto;
+}
+.trix-content .attachment--content img {
+  display: block !important;
+  max-width: 100%; /* 必要に応じてサイズ調整 */
+  height: auto;
+}
