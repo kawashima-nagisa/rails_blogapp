@@ -1,16 +1,17 @@
 <%= search_form_for(@q, url: search_path, method: :get, class: 'd-flex') do |f| %>
   <%
-=begin%>
- <%= f.search_field :title_or_body_or_user_email_or_user_name_or_category_name_cont_any, placeholder: "検索キーワードを入力", class: 'form-control me-2' %> 
+=begin
+  %>
+ <%= f.search_field :title_or_body_or_user_email_or_user_name_or_category_name_cont_any, placeholder: "検索キーワードを入力", class: 'form-control me-2' %>
 <%
-=end%>
+=end
+%>
 <div data-controller="autocomplete" data-autocomplete-url-value="/search/autocomplete" role="combobox" class="relative">
   <%= f.search_field :title_or_body_or_user_email_or_user_name_or_category_name_cont_any, placeholder: "検索キーワードを入力", class: 'form-control me-2 search', data: { autocomplete_target: 'input' } %>
   <div class="autocomplete-results bg-white rounded-md max-w-full">
     <ul class="list-group bg-white absolute w-full md:text-sm max-w-max" data-autocomplete-target="results"></ul>
   </div>
 </div>
-  
 
   <!-- 開始日フィールド -->
   <%= f.label :created_at_gteq, "投稿開始日" %>
