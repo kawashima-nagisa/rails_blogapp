@@ -10,6 +10,8 @@ application.register("modals", ModalsController);
 
 import AutocompleteController from "./autocomplete_controller";
 application.register("autocomplete", AutocompleteController);
+import CalendarController from "./calendar_controller";
+application.register("calendar", CalendarController);
 
 // Eager load all controllers defined in the import map under controllers/**/*_controller
 import { eagerLoadControllersFrom } from "@hotwired/stimulus-loading";
