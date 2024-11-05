@@ -31,8 +31,10 @@ class User < ApplicationRecord
     %w[email name created_at updated_at]
   end
 
+  # 現在のセッションのログイン時刻が24時間以内,前回のログインから24時間以内であればアクティブとする
   def active?
-    last_sign_in_at.present? && last_sign_in_at > 15.minutes.ago
+    (current_sign_in_at && current_sign_in_at > 24.hours.ago) ||
+      (last_sign_in_at && last_sign_in_at > 24.minutes.ago)
   end
 end
 
