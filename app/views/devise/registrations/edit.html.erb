@@ -28,7 +28,8 @@
       <% end %>
     </div>
       <%
-=begin%>
+=begin
+      %>
  <!-- 現在のパスワード -->
     <div class="mb-3" style="position: relative;">
       <%= f.label :current_password, "現在のパスワード", class: "form-label" %>
@@ -53,9 +54,10 @@
       <%= f.password_field :password_confirmation, class: "form-control", id: "passwordConfirmationField", autocomplete: "new-password" %>
       <i onclick="togglePasswordVisibility('passwordConfirmationField', this)" class="bi bi-eye" style="position: absolute; right: 10px; top: 35px; cursor: pointer;"></i>
       <div class="invalid-feedback">パスワードを再度入力してください。</div>
-    </div> 
+    </div>
 <%
-=end%>
+=end
+%>
 
     <!-- 更新ボタン -->
     <div class="d-grid gap-2">

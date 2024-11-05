@@ -27,6 +27,7 @@ class Account::PasswordsController < ApplicationController
       :password_confirmation
     )
   end
+
   def configure_minimum_password_length
     @minimum_password_length = Devise.password_length.min
   end
