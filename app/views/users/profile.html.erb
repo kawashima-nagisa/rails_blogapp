@@ -12,14 +12,17 @@
 
 
 
-
- <% if @user.persisted? && @user.profile_image.attached? %>
+<% if current_user == @user %>
+  <% if @user.persisted? && @user.profile_image.attached? %>
+    <p>現在のプロフィール画像:</p>
+    <%= image_tag @user.profile_image.variant(resize_to_limit: [150, 150]), alt: "プロフィール画像", class: "rounded" %>
+  <% else %>
+    <p>プロフィール画像はまだありません</p>
+  <% end %>
+<% elsif current_user && @user.persisted? && @user.profile_image.attached? %>
   <p>現在のプロフィール画像:</p>
-  <%= image_tag @user.profile_image.variant(resize_to_limit: [150, 150]) %>
-<% else %>
-  <p>プロフィール画像はまだありません</p>
+  <%= image_tag @user.profile_image.variant(resize_to_limit: [150, 150]), alt: "プロフィール画像", class: "rounded" %>
 <% end %>
-  
 
 
 <canvas data-controller="calendar"
