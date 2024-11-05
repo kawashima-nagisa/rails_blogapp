@@ -3,14 +3,11 @@
 <p>アカウント作成日: <%= @user.created_at.strftime("%Y年%m月%d日") %></p>
 <p>最終ログイン日: <%= @user.current_sign_in_at ? @user.current_sign_in_at.strftime("%Y年%m月%d日 %H:%M") : "未ログイン" %></p>
 
-
-<p>現在の状態: 
+<p>現在の状態:
   <span class="badge <%= @user.active? ? 'bg-success' : 'bg-secondary' %>">
     <%= @user.active? ? "アクティブ" : "非アクティブ" %>
   </span>
 </p>
-
-
 
 <% if current_user == @user %>
   <% if @user.persisted? && @user.profile_image.attached? %>
@@ -23,7 +20,6 @@
   <p>現在のプロフィール画像:</p>
   <%= image_tag @user.profile_image.variant(resize_to_limit: [150, 150]), alt: "プロフィール画像", class: "rounded" %>
 <% end %>
-
 
 <canvas data-controller="calendar"
         data-calendar-target="canvas"

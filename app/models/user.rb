@@ -6,20 +6,20 @@ class User < ApplicationRecord
   # 許可された画像形式のバリデーション
   validate :profile_image_content_type
   validate :profile_image_size
-  validates :name, presence: true, length: { maximum: 20 }
-  validates :password, length: { in: 6..10 }, if: -> { password.present? }
+  validates :name, presence: true, length: {maximum: 20}
+  validates :password, length: {in: 6..10}, if: -> { password.present? }
   validates :email,
-            format: {
-              with: URI::MailTo::EMAIL_REGEXP
-            },
-            uniqueness: true
+    format: {
+      with: URI::MailTo::EMAIL_REGEXP
+    },
+    uniqueness: true
 
   devise :database_authenticatable,
-         :registerable,
-         :recoverable,
-         :rememberable,
-         :validatable,
-         :trackable
+    :registerable,
+    :recoverable,
+    :rememberable,
+    :validatable,
+    :trackable
   has_many :posts, dependent: :destroy
 
   has_many :comments, dependent: :destroy
@@ -27,7 +27,7 @@ class User < ApplicationRecord
 
   def profile_image_as_thumbnail
     if profile_image.attached? &&
-         profile_image.content_type.in?(%w[image/jpeg image/png])
+        profile_image.content_type.in?(%w[image/jpeg image/png])
       profile_image.variant(resize_to_limit: [100, 100]).processed
     end
   end
@@ -48,9 +48,9 @@ private
 # ファイル形式のバリデーション
 def profile_image_content_type
   if profile_image.attached? &&
-       !profile_image.content_type.in?(
-         %w[image/jpeg image/jpg image/png image/gif image/webp]
-       )
+      !profile_image.content_type.in?(
+        %w[image/jpeg image/jpg image/png image/gif image/webp]
+      )
     errors.add(:profile_image, ":ファイル形式はJPEG, JPG, PNG, GIF, WEBPのみ許可されています。")
   end
 end

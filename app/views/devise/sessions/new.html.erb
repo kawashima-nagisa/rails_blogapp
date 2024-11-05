@@ -3,7 +3,7 @@
 <div class="container" style="max-width: 400px;">
   <!-- カスタムバリデーションのための needs-validation クラスと novalidate 属性を追加 -->
   <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "needs-validation", novalidate: true }) do |f| %>
-    
+
     <!-- メールアドレスフィールド -->
     <div class="mb-3">
       <%= f.label :email, class: "form-label" %>
@@ -12,8 +12,6 @@
         有効なメールアドレスを入力してください。
       </div>
     </div>
-
-   
 
     <!-- パスワードフィールド -->
     <div class="mb-3">
