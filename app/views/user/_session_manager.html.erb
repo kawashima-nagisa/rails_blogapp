@@ -11,6 +11,7 @@
 
     <li><%= link_to "Home", root_path, class: "dropdown-item" %></li>
     <li><%= link_to "Edit Account",  edit_user_registration_path, method:  :delete, class: "dropdown-item" %></li>
+    <li> <%= link_to "Password", edit_account_password_path, class: "dropdown-item" %></li>
 
     <li><hr class="dropdown-divider"></li>
     <li><%= button_to "Sign out",  destroy_user_session_path, method:  :delete, class: "dropdown-item" %></li>

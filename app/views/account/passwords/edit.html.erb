@@ -1,0 +1,61 @@
+<h2 class="text-center my-4">パスワードの編集</h2>
+
+<div class="container" style="max-width: 500px;">
+  <%= form_with(model: current_user, url: account_password_path, html: { method: :put, class: "needs-validation", novalidate: true }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: current_user %>
+
+    <!-- 現在のパスワード -->
+    <div class="mb-3" style="position: relative;">
+      <%= f.label :current_password, "現在のパスワード", class: "form-label" %>
+      <%= f.password_field :current_password, class: "form-control", id: "currentPasswordField", autocomplete: "current-password", required: true %>
+      <i onclick="togglePasswordVisibility('currentPasswordField', this)" class="bi bi-eye" style="position: absolute; right: 10px; top: 35px; cursor: pointer;"></i>
+      <div class="invalid-feedback">現在のパスワードを入力してください。</div>
+    </div>
+
+    <!-- 新しいパスワード -->
+    <div class="mb-3" style="position: relative;">
+      <%= f.label :password, "新しいパスワード（任意）", class: "form-label" %>
+      <%= f.password_field :password, class: "form-control", id: "passwordField", autocomplete: "new-password", minlength: @minimum_password_length,  required: true %>
+      <i onclick="togglePasswordVisibility('passwordField', this)" class="bi bi-eye" style="position: absolute; right: 10px; top: 35px; cursor: pointer;"></i>
+      <div class="invalid-feedback">パスワードを<%= @minimum_password_length %>文字以上で入力してください。</div>
+    </div>
+
+    <!-- 新しいパスワードの確認 -->
+    <div class="mb-3" style="position: relative;">
+      <%= f.label :password_confirmation, "新しいパスワードの確認", class: "form-label" %>
+      <%= f.password_field :password_confirmation, class: "form-control", id: "passwordConfirmationField", autocomplete: "new-password",  required: true %>
+      <i onclick="togglePasswordVisibility('passwordConfirmationField', this)" class="bi bi-eye" style="position: absolute; right: 10px; top: 35px; cursor: pointer;"></i>
+      <div class="invalid-feedback">確認用のパスワードを入力してください。</div>
+    </div>
+
+    <!-- 更新ボタン -->
+    <div class="d-grid gap-2">
+      <%= f.submit "更新する", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
+
+<script>
+  function togglePasswordVisibility(fieldId, icon) {
+    const field = document.getElementById(fieldId);
+    const isPasswordHidden = field.type === "password";
+    field.type = isPasswordHidden ? "text" : "password";
+    icon.className = isPasswordHidden ? "bi bi-eye-slash" : "bi bi-eye";
+  }
+
+  // Bootstrapのカスタムバリデーション
+  (function () {
+    'use strict';
+    var forms = document.querySelectorAll('.needs-validation');
+    Array.prototype.slice.call(forms)
+      .forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        }, false);
+      });
+  })();
+</script>

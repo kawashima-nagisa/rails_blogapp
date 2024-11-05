@@ -27,7 +27,9 @@
         <%= image_tag resource.profile_image_as_thumbnail, class: "rounded-circle img-thumbnail" if resource.profile_image_as_thumbnail %>
       <% end %>
     </div>
-      <!-- 現在のパスワード -->
+      <%
+=begin%>
+ <!-- 現在のパスワード -->
     <div class="mb-3" style="position: relative;">
       <%= f.label :current_password, "現在のパスワード", class: "form-label" %>
       <%= f.password_field :current_password, class: "form-control", id: "currentPasswordField", autocomplete: "current-password", required: true %>
@@ -51,7 +53,9 @@
       <%= f.password_field :password_confirmation, class: "form-control", id: "passwordConfirmationField", autocomplete: "new-password" %>
       <i onclick="togglePasswordVisibility('passwordConfirmationField', this)" class="bi bi-eye" style="position: absolute; right: 10px; top: 35px; cursor: pointer;"></i>
       <div class="invalid-feedback">パスワードを再度入力してください。</div>
-    </div>
+    </div> 
+<%
+=end%>
 
     <!-- 更新ボタン -->
     <div class="d-grid gap-2">
