@@ -9,6 +9,7 @@ Rails.application.routes.draw do
              }
 
   get "u/:id", to: "users#profile", as: "user"
+  resources :users, only: [:update]
   resources :posts do
     resources :comments
   end

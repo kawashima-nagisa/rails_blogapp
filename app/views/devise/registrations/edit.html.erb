@@ -12,6 +12,16 @@
     <%= f.text_field :name, autofocus: true, autocomplete: "email" %>
   </div>
 
+  <div class="field">
+    <%= f.label :profile_image, "プロフィール画像" %>
+    <%= f.file_field :profile_image %>
+  </div>
+
+  <% if resource.profile_image.attached? %>
+    <p>現在のプロフィール画像:</p>
+    <%= image_tag resource.profile_image_as_thumbnail if resource.profile_image_as_thumbnail %>
+  <% end %>
+
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>

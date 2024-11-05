@@ -26,9 +26,22 @@ class UsersController < ApplicationController
       end
   end
 
+  def update
+    if @user.update(user_params)
+      puts "画像が添付されましたか？: #{@user.profile_image.attached?}"
+      redirect_to user_path(@user), notice: "プロフィール画像が更新されました。"
+    else
+      render :profile
+    end
+  end
+
   private
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def user_params
+    params.require(:user).permit(:profile_image) # profile_imageを許可
   end
 end
