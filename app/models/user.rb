@@ -6,6 +6,13 @@ class User < ApplicationRecord
   # 許可された画像形式のバリデーション
   validate :profile_image_content_type
   validate :profile_image_size
+  validates :name, presence: true, length: { maximum: 20 }
+  validates :password, length: { in: 6..10 }, if: -> { password.present? }
+  validates :email,
+            format: {
+              with: URI::MailTo::EMAIL_REGEXP
+            },
+            uniqueness: true
 
   devise :database_authenticatable,
          :registerable,
@@ -14,8 +21,6 @@ class User < ApplicationRecord
          :validatable,
          :trackable
   has_many :posts, dependent: :destroy
-
-  has_many :categories, dependent: :destroy
 
   has_many :comments, dependent: :destroy
   has_many :notifications, as: :recipient, dependent: :destroy

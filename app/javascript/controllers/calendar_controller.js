@@ -20,7 +20,7 @@ export default class extends Controller {
       data: {
         datasets: [
           {
-            label: "投稿数",
+            label: "記事の投稿数と更新回数の合計",
             data: chartData,
             backgroundColor(ctx) {
               //そのマス目の投稿数を取得
@@ -88,7 +88,8 @@ export default class extends Controller {
           tooltip: {
             callbacks: {
               title: () => "",
-              label: (context) => `投稿数: ${context.raw.v}`, // ツールチップに投稿数を表示
+              label: (context) =>
+                `記事の投稿数と更新回数の合計: ${context.raw.v}`, // ツールチップに投稿数を表示
             },
           },
         },

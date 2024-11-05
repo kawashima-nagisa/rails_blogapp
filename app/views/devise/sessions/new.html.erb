@@ -1,30 +1,72 @@
-<h2>Log in</h2>
+<h2 class="text-center my-4">ログイン</h2>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name, autofocus: true, autocomplete: "email" %>
-  </div>
+<div class="container" style="max-width: 400px;">
+  <!-- カスタムバリデーションのための needs-validation クラスと novalidate 属性を追加 -->
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "needs-validation", novalidate: true }) do |f| %>
+    
+    <!-- メールアドレスフィールド -->
+    <div class="mb-3">
+      <%= f.label :email, class: "form-label" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", required: true %>
+      <div class="invalid-feedback">
+        有効なメールアドレスを入力してください。
+      </div>
+    </div>
 
-  <div class="field">
-    <%= f.label :password %><br>
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+   
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+    <!-- パスワードフィールド -->
+    <div class="mb-3">
+      <%= f.label :password, class: "form-label" %>
+      <div class="input-group">
+        <%= f.password_field :password, autocomplete: "current-password", class: "form-control", id: "passwordField", required: true %>
+        <button type="button" onclick="togglePasswordVisibility('passwordField', this)" class="btn btn-outline-secondary">
+          <i class="bi bi-eye"></i>
+        </button>
+        <div class="invalid-feedback">
+          パスワードを入力してください。
+        </div>
+      </div>
+    </div>
+
+    <!-- 「ログイン情報を記憶する」チェックボックス -->
+    <% if devise_mapping.rememberable? %>
+      <div class="form-check mb-3">
+        <%= f.check_box :remember_me, class: "form-check-input", id: "rememberMe" %>
+        <%= f.label :remember_me, "ログイン情報を記憶する", class: "form-check-label", for: "rememberMe" %>
+      </div>
+    <% end %>
+
+    <!-- ログインボタン -->
+    <div class="d-grid gap-2">
+      <%= f.submit "ログイン", class: "btn btn-primary" %>
     </div>
   <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
+  <%= render "devise/shared/links" %>
+</div>
 
-<%= render "devise/shared/links" %>
+<script>
+  // パスワード表示/非表示切替
+  function togglePasswordVisibility(fieldId, icon) {
+    const field = document.getElementById(fieldId);
+    const isPasswordHidden = field.type === "password";
+    field.type = isPasswordHidden ? "text" : "password";
+    icon.innerHTML = isPasswordHidden ? '<i class="bi bi-eye-slash"></i>' : '<i class="bi bi-eye"></i>';
+  }
+
+  // Bootstrapのカスタムバリデーション
+  (function () {
+    'use strict'
+    var forms = document.querySelectorAll('.needs-validation')
+    Array.prototype.slice.call(forms).forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+        form.classList.add('was-validated')
+      }, false)
+    })
+  })()
+</script>

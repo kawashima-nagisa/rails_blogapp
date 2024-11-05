@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     resources :comments
   end
 
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+
   resources :categories, only: %i[index new create edit update destroy]
 
   # get 'pages/home', to: 'pages#home'

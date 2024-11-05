@@ -61,6 +61,7 @@ group :development do
   gem "brakeman", require: false
   gem "standard", require: false
   gem "better_errors"
+  gem "letter_opener_web", "~> 2.0"
   gem "syntax_tree"
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"

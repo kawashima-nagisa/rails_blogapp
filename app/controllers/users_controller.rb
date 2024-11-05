@@ -42,6 +42,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:profile_image) # profile_imageを許可
+    params.require(:user).permit(:profile_image, name) # profile_imageを許可
   end
 end

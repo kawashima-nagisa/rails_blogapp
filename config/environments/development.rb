@@ -1,6 +1,9 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
+  # Set the default URL for ActionMailer in development.
+  config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
+  config.action_mailer.delivery_method = :letter_opener_web
   config.assets.debug = true
   config.assets.compile = true
   config.assets.check_precompiled_asset = false
