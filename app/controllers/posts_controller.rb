@@ -6,9 +6,10 @@ class PostsController < ApplicationController
   def index
     if params[:category_id]
       @category = Category.find(params[:category_id])
-      @posts = @category.posts
+      @posts =
+        @category.posts.order(created_at: :desc).page(params[:page]).per(4)
     else
-      @posts = Post.all.order(created_at: :desc)
+      @posts = Post.all.order(created_at: :desc).page(params[:page]).per(4)
     end
     @show_full_content = false
     @recent_posts = Post.order(created_at: :desc).limit(3)
@@ -48,16 +49,16 @@ class PostsController < ApplicationController
     if @post.save
       flash.now[:notice] = "投稿が成功しました"
       render turbo_stream: [
-        turbo_stream.prepend(
-          "posts",
-          partial: "post",
-          locals: {
-            post: @post
-          }
-        ),
-        turbo_stream.replace("modal", ""), # 成功時にモーダルを閉じる
-        turbo_stream.update("flash", partial: "layouts/flash") # フラッシュメッセージを表示
-      ]
+               turbo_stream.prepend(
+                 "posts",
+                 partial: "post",
+                 locals: {
+                   post: @post
+                 }
+               ),
+               turbo_stream.replace("modal", ""), # 成功時にモーダルを閉じる
+               turbo_stream.update("flash", partial: "layouts/flash") # フラッシュメッセージを表示
+             ]
     else
       render turbo_stream:
                turbo_stream.replace(
@@ -67,7 +68,7 @@ class PostsController < ApplicationController
                    post: @post
                  }
                ),
-        status: :unprocessable_entity
+             status: :unprocessable_entity
     end
   end
 
@@ -76,16 +77,16 @@ class PostsController < ApplicationController
     if @post.update(post_params)
       flash.now[:notice] = "更新が成功しました"
       render turbo_stream: [
-        turbo_stream.replace(
-          "post_#{@post.id}",
-          partial: "post",
-          locals: {
-            post: @post
-          }
-        ),
-        turbo_stream.replace("modal", ""), # 成功時にモーダルを閉じる
-        turbo_stream.update("flash", partial: "layouts/flash") # フラッシュメッセージを表示
-      ]
+               turbo_stream.replace(
+                 "post_#{@post.id}",
+                 partial: "post",
+                 locals: {
+                   post: @post
+                 }
+               ),
+               turbo_stream.replace("modal", ""), # 成功時にモーダルを閉じる
+               turbo_stream.update("flash", partial: "layouts/flash") # フラッシュメッセージを表示
+             ]
     else
       render turbo_stream:
                turbo_stream.replace(
@@ -95,7 +96,7 @@ class PostsController < ApplicationController
                    post: @post
                  }
                ),
-        status: :unprocessable_entity
+             status: :unprocessable_entity
     end
   end
 
