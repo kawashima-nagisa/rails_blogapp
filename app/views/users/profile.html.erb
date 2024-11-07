@@ -1,3 +1,4 @@
+<% breadcrumb :user_profile, @user %>
 <h1><%= @user.name %>さんのプロフィールページ</h1>
 <h5><%= pluralize(@user.views, "view") %></h5>
 <p>アカウント作成日: <%= @user.created_at.strftime("%Y年%m月%d日") %></p>
