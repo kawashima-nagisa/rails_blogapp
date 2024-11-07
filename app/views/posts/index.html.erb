@@ -1,14 +1,44 @@
 
 <div class="container">
-  <h1>投稿された記事一覧</h1>
-
-  <!-- 投稿一覧表示 -->
-  <div id="posts">
+<div class="row  d-flex justify-content-between">
+<!-- 投稿一覧表示 -->
+  <div id="posts" class="col-9">
+   <h1><%= @category ? "#{@category.name}の投稿一覧" : "投稿された記事一覧"%></h1>
     <% @posts.each do |post| %>
       <%= render partial: "post", locals: { post: post, show_full_content: @show_full_content } %>
     <% end %>
   </div>
 
+ 
+   <div class="mt-5 col-3">
+    <!-- 最新の３つの記事を表示する -->
+    <div>
+    <h2>最新の記事</h2>
+      <% @recent_posts.each do |recent_post| %>
+        <div>
+          <%= render partial: "post", locals: { post: recent_post,show_full_content: @show_full_content} %>
+        </div>
+      <% end %>
+    </div>
+
+      <!-- カテゴリー名 (投稿数)のような形で表示 -->
+      <div class="mt-4">
+        <h2>カテゴリー</h2>
+        <ul class="list-unstyled">
+          <% @categories.each do |category| %>
+            <li>
+              <%= link_to "#{category.name} (#{category.posts_count})", category_posts_path(category) %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
+  </div>
+
   <!-- 新しい記事をモーダルで作成 -->
   <%= link_to "新しい記事を作成する", new_post_path, data: { turbo_frame: "modal" } %>
 </div>
+</div>
+ 
+
+  

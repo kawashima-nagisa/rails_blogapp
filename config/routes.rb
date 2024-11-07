@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :categories
+  resources :categories, only: %i[index new create edit update destroy] do
+    get "posts", to: "posts#index", as: :posts
+  end
   namespace :account do
     resource :password, only: %i[edit update]
   end
