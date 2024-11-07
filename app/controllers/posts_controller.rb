@@ -48,16 +48,16 @@ class PostsController < ApplicationController
     if @post.save
       flash.now[:notice] = "投稿が成功しました"
       render turbo_stream: [
-               turbo_stream.prepend(
-                 "posts",
-                 partial: "post",
-                 locals: {
-                   post: @post
-                 }
-               ),
-               turbo_stream.replace("modal", ""), # 成功時にモーダルを閉じる
-               turbo_stream.update("flash", partial: "layouts/flash") # フラッシュメッセージを表示
-             ]
+        turbo_stream.prepend(
+          "posts",
+          partial: "post",
+          locals: {
+            post: @post
+          }
+        ),
+        turbo_stream.replace("modal", ""), # 成功時にモーダルを閉じる
+        turbo_stream.update("flash", partial: "layouts/flash") # フラッシュメッセージを表示
+      ]
     else
       render turbo_stream:
                turbo_stream.replace(
@@ -67,7 +67,7 @@ class PostsController < ApplicationController
                    post: @post
                  }
                ),
-             status: :unprocessable_entity
+        status: :unprocessable_entity
     end
   end
 
@@ -76,16 +76,16 @@ class PostsController < ApplicationController
     if @post.update(post_params)
       flash.now[:notice] = "更新が成功しました"
       render turbo_stream: [
-               turbo_stream.replace(
-                 "post_#{@post.id}",
-                 partial: "post",
-                 locals: {
-                   post: @post
-                 }
-               ),
-               turbo_stream.replace("modal", ""), # 成功時にモーダルを閉じる
-               turbo_stream.update("flash", partial: "layouts/flash") # フラッシュメッセージを表示
-             ]
+        turbo_stream.replace(
+          "post_#{@post.id}",
+          partial: "post",
+          locals: {
+            post: @post
+          }
+        ),
+        turbo_stream.replace("modal", ""), # 成功時にモーダルを閉じる
+        turbo_stream.update("flash", partial: "layouts/flash") # フラッシュメッセージを表示
+      ]
     else
       render turbo_stream:
                turbo_stream.replace(
@@ -95,7 +95,7 @@ class PostsController < ApplicationController
                    post: @post
                  }
                ),
-             status: :unprocessable_entity
+        status: :unprocessable_entity
     end
   end
 

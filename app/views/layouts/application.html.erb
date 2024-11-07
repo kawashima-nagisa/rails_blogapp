@@ -26,13 +26,12 @@
 
    </header>
    <main>
-   
+
    <%= turbo_frame_tag "flash" do %>
   <%= render "layouts/flash" %>
 <% end %>
 <%= breadcrumbs  style: :bootstrap5 %>
-               
-   
+
    <%= yield %>
    </main>
 

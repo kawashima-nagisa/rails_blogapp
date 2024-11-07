@@ -1,9 +1,9 @@
-#rootページ
+# rootページ
 crumb :root do
   link "Home", root_path
 end
 
-#Aboutページ
+# Aboutページ
 crumb :about do
   link "About", about_path
 end
