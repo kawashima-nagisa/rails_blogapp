@@ -27,37 +27,25 @@
         <%= image_tag resource.profile_image_as_thumbnail, class: "rounded-circle img-thumbnail" if resource.profile_image_as_thumbnail %>
       <% end %>
     </div>
-      <%
-=begin
-      %>
- <!-- 現在のパスワード -->
-    <div class="mb-3" style="position: relative;">
-      <%= f.label :current_password, "現在のパスワード", class: "form-label" %>
-      <%= f.password_field :current_password, class: "form-control", id: "currentPasswordField", autocomplete: "current-password", required: true %>
-      <i onclick="togglePasswordVisibility('currentPasswordField', this)" class="bi bi-eye" style="position: absolute; right: 10px; top: 35px; cursor: pointer;"></i>
-      <div class="form-text">変更を保存するには現在のパスワードを入力してください。</div>
-      <div class="invalid-feedback">現在のパスワードを入力してください。</div>
-    </div>
+    <!-- SNSリンク (オプション) -->
+    <div class="sns-link my-4">
+      <h4>SNS URL (任意)</h4>
 
-    <!-- パスワード -->
-    <div class="mb-3" style="position: relative;">
-      <%= f.label :password, "新しいパスワード (任意)", class: "form-label" %>
-      <%= f.password_field :password, class: "form-control", id: "passwordField", autocomplete: "new-password", minlength: @minimum_password_length %>
-      <i onclick="togglePasswordVisibility('passwordField', this)" class="bi bi-eye" style="position: absolute; right: 10px; top: 35px; cursor: pointer;"></i>
-      <div class="form-text">パスワードを変更しない場合は空欄のままにしてください。</div>
-      <div class="invalid-feedback">パスワードを<%= @minimum_password_length %>文字以上で入力してください。</div>
-    </div>
+      <div class="mb-3">
+        <%= f.label :twitter, "Twitter URL", class: "form-label" %>
+        <%= f.text_field :twitter, placeholder: "例: https://twitter.com/username", class: "form-control" %>
+      </div>
 
-    <!-- パスワード確認 -->
-    <div class="mb-3" style="position: relative;">
-      <%= f.label :password_confirmation, "パスワードの確認", class: "form-label" %>
-      <%= f.password_field :password_confirmation, class: "form-control", id: "passwordConfirmationField", autocomplete: "new-password" %>
-      <i onclick="togglePasswordVisibility('passwordConfirmationField', this)" class="bi bi-eye" style="position: absolute; right: 10px; top: 35px; cursor: pointer;"></i>
-      <div class="invalid-feedback">パスワードを再度入力してください。</div>
+      <div class="mb-3">
+        <%= f.label :facebook, "Facebook URL", class: "form-label" %>
+        <%= f.text_field :facebook, placeholder: "例: https://facebook.com/username", class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= f.label :github, "GitHub URL", class: "form-label" %>
+        <%= f.text_field :github, placeholder: "例: https://github.com/username", class: "form-control" %>
+      </div>
     </div>
-<%
-=end
-%>
 
     <!-- 更新ボタン -->
     <div class="d-grid gap-2">
