@@ -3,10 +3,16 @@
  <%= render partial: "post", locals: { post: @post, show_full_content: @show_full_content } %>
 
   <div>
-   <%= link_to "Edit this post", edit_post_path(@post), data: { turbo_frame: "modal" } %> |
-    <%= link_to "Back to posts", posts_path %>
+    <!-- 編集・削除ボタンを表示する条件分岐 -->
+  <% if current_user == @post.user %>
+    <div class="mt-3">
+      <%= link_to "Edit this post", edit_post_path(@post), data: { turbo_frame: "modal" }, class: "btn btn-outline-warning" %> |
+      <%= link_to "Destroy this post", @post, method: :delete, class: "btn btn-danger ", data: { confirm: "Are you sure?" } %>
+    </div>
+  <% end %>
 
-    <%= button_to "Destroy this post", @post, method: :delete %>
+  <div class="mt-4">
+    <%= link_to "Back to posts", posts_path, class: "btn btn-primary" %>
   </div>
 
 </div>
