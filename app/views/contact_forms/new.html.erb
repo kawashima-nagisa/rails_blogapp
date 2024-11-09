@@ -1,0 +1,46 @@
+<div style="max-width: 400px;" class="mx-auto">
+<h2>お問い合わせフォーム</h2>
+
+<%= form_with model: @contact_form, url: contact_forms_path, html:  { class: "needs-validation", novalidate: true } do |f| %>
+ <%= render "devise/shared/error_messages", resource: @contact_form %>
+  <div class="mb-3">
+    <%= f.label :name, "お名前",  class: "form-label"  %>
+    <%= f.text_field :name, class: "form-control", required: true, maxlength: 30 %>
+    <div class="invalid-feedback">お名前を入力してください（30文字以内）。</div>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :email, "メールアドレス" ,  class: "form-label"  %>
+    <%= f.email_field :email, class: "form-control", required: true %>
+    <div class="invalid-feedback">有効なメールアドレスを入力してください。</div>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :message, "お問い合わせ内容" ,  class: "form-label" %>
+    <%= f.text_area :message, class: "form-control", rows: 5, required: true %>
+    <div class="invalid-feedback">お問い合わせ内容を入力してください。</div>
+  </div>
+
+  <%= f.submit "送信", class: "btn btn-primary" %>
+<% end %>
+
+</div>
+
+
+<script>
+  // Bootstrapのカスタムバリデーション
+  (function () {
+    'use strict';
+    var forms = document.querySelectorAll('.needs-validation');
+    Array.prototype.slice.call(forms)
+      .forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        }, false);
+      });
+  })();
+</script>

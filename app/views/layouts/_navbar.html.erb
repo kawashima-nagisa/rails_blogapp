@@ -15,6 +15,9 @@
         <li class="nav-item">
           <%= link_to "Posts", posts_path, class: "nav-link" %>
         </li>
+        <li class="nav-item">
+          <%= link_to "Contacts", new_contact_form_path, class: "nav-link" %>
+        </li>
         <%= render 'layouts/notifications' %>
         <%= render 'user/session_manager' %>
 

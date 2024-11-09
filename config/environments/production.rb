@@ -1,6 +1,20 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
+  # Looking to send emails in production? Check out our Email API/SMTP product!
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: "smtp-relay.brevo.com",
+    port: 587,
+    user_name: Rails.application.credentials.dig(:brevo, :username), # 保存したメールアドレス
+    password: Rails.application.credentials.dig(:brevo, :smtp_password), # 生成したSMTPパスワード
+    authentication: :login,
+    enable_starttls_auto: true
+  }
+
+  config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
+  # config.action_mailer.default_url_options = { host: 'yourdomain.com', protocol: 'https' }
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -77,7 +91,7 @@ Rails.application.configure do
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
-  # config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
