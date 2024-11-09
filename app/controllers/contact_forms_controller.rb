@@ -1,3 +1,5 @@
+require "net/http"
+require "uri"
 class ContactFormsController < ApplicationController
   def new
     @contact_form = ContactForm.new
@@ -34,7 +36,7 @@ class ContactFormsController < ApplicationController
     response =
       Net::HTTP.post_form(
         URI.parse("https://www.google.com/recaptcha/api/siteverify"),
-        {"secret" => secret_key, "response" => token}
+        { "secret" => secret_key, "response" => token }
       )
     result = JSON.parse(response.body)
     Rails.logger.info "reCAPTCHA result: #{result}"
