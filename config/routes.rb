@@ -10,10 +10,10 @@ Rails.application.routes.draw do
   get "search", to: "search#index"
   get "search/autocomplete", to: "search#autocomplete"
   devise_for :users,
-             controllers: {
-               sessions: "users/sessions",
-               registrations: "users/registrations"
-             }
+    controllers: {
+      sessions: "users/sessions",
+      registrations: "users/registrations"
+    }
 
   get "u/:id", to: "users#profile", as: "user"
   resources :posts do
@@ -36,6 +36,6 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "pages#home"
   delete "notifications/:id",
-         to: "application#destroy_notification",
-         as: "destroy_notification"
+    to: "application#destroy_notification",
+    as: "destroy_notification"
 end
