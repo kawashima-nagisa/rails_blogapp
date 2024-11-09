@@ -66,6 +66,7 @@ group :development do
   gem "better_errors"
   gem "letter_opener_web", "~> 2.0"
   gem "syntax_tree"
+  gem "recaptcha", require: "recaptcha/rails"
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 
