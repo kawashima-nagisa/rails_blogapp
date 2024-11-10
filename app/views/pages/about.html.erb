@@ -1,11 +1,43 @@
 <% breadcrumb :about %>
-<h1>Pages#about</h1>
-<p>Find me in app/views/pages/about.html.erb</p>
-<%= link_to "Home", root_path, class: "btn btn-primary" %>
 
-<i class="bi bi-alarm"></i>
-<!-- Bootstrapのボタン -->
-<%= link_to "Home", root_path, class: "btn btn-primary" %>
 
-<!-- Bootstrap Iconsの使用 -->
-<i class="bi bi-alarm"></i>
+
+
+<div class="about__skills">
+
+  <h5>Myskills</h5>
+
+  <ul>
+    <li>Rails</li>
+    <li>Apex</li>
+    <li>wordpress(php)</li>
+    <li>Next.js(簡単なブログアプリ程度)</li>
+    <li>wordpress(簡単なブログアプリ程度)</li>
+
+  </ul>
+
+</div>
+
+<div class="container mt-4 about-page">
+  <h1>私のQiita記事一覧</h1>
+  <div class="row g-4">
+    <% if @articles.present? %>
+    <% @articles.each do |article| %>
+    <div class="col-md-4">
+      <div class="article-card p-3 border border-3 rounded border-success">
+        <h3 class="article-title">
+          <%= link_to article["title"], article["url"], target: "_blank", class: "text-decoration-none text-success" %>
+        </h3>
+        <p class="article-summary text-muted"><%= truncate(article["body"], length: 100) %></p>
+        <div class="article-info">
+          <span>投稿日: <%= article["created_at"].to_date %></span> |
+          <span>いいね: <%= article["likes_count"] %></span>
+        </div>
+      </div>
+    </div>
+    <% end %>
+    <% else %>
+    <p>記事が見つかりませんでした。</p>
+    <% end %>
+  </div>
+</div>

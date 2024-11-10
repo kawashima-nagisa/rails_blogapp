@@ -70,7 +70,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     response =
       Net::HTTP.post_form(
         URI.parse(RECAPTCHA_SITEVERIFY_URL),
-        { "secret" => RECAPTCHA_SECRET_KEY, "response" => token }
+        {"secret" => RECAPTCHA_SECRET_KEY, "response" => token}
       )
     result = JSON.parse(response.body)
     Rails.logger.info "reCAPTCHA result: #{result}" # デバッグ用ログ

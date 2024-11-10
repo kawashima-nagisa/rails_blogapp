@@ -1,0 +1,18 @@
+.about-page {
+  .article-card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    transition: transform 0.2s ease-in-out;
+    &:hover {
+      transform: scale(1.02);
+      cursor: pointer;
+    }
+  }
+  .article-title {
+    font-size: 1.2rem;
+  }
+  .article-info {
+    font-size: 0.9rem;
+    color: #6c757d;
+  }
+}
