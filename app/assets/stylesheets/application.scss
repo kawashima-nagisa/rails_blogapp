@@ -146,3 +146,28 @@ form#post_search {
   max-width: 100%; /* 必要に応じてサイズ調整 */
   height: auto;
 }
+
+
+
+.pagination {
+  margin-top: 20px;
+  .page-item.active .page-link {
+    background-color: #28a745; /* アクティブなページの背景を緑色に */
+    color: white;
+    border-color: #28a745;
+  }
+  .page-link {
+    color: #28a745; /* リンクのテキストを緑色に */
+    border: 1px solid #28a745;
+    &:hover {
+      background-color: #218838; /* ホバー時に濃い緑に変更 */
+      color: white;
+    }
+  }
+  .page-item.disabled .page-link {
+    color: #6c757d; /* 無効なリンクの色を変更 */
+    background-color: #e9ecef;
+    border-color: #e9ecef;
+  }
+}
+
