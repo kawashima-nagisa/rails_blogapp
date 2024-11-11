@@ -2,6 +2,11 @@ class ApplicationController < ActionController::Base
   before_action :set_notifications, if: :current_user
   before_action :set_query
 
+
+  def after_sign_in_path_for(resource)
+    posts_path 
+  end
+
   def set_query
     @q = Post.ransack(params[:q])
   end

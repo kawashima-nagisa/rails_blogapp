@@ -1,9 +1,10 @@
 require "rails_helper"
 
 RSpec.describe Users::RegistrationsController, type: :controller do
-  include Devise::Test::ControllerHelpers # Deviseのテストヘルパーをインクルード
+  include Devise::Test::ControllerHelpers
+
   before do
-    @request.env["devise.mapping"] = Devise.mappings[:user] # Deviseのマッピング設定
+    @request.env["devise.mapping"] = Devise.mappings[:user]
   end
 
   let(:valid_user_params) { {email: "test@example.com", password: "password", name: "Test User"} }
@@ -19,7 +20,7 @@ RSpec.describe Users::RegistrationsController, type: :controller do
           post :create, params: {user: valid_user_params}
         }.to change(User, :count).by(1)
 
-        expect(response).to redirect_to(root_path) # 適切なリダイレクト先にリダイレクト
+        expect(response).to redirect_to(posts_path)
       end
     end
 
@@ -44,7 +45,7 @@ RSpec.describe Users::RegistrationsController, type: :controller do
     let(:update_params) { {name: "Updated Name"} }
 
     before do
-      sign_in user # ユーザーをサインイン
+      sign_in user
     end
 
     it "ユーザー情報が更新される" do
@@ -53,6 +54,16 @@ RSpec.describe Users::RegistrationsController, type: :controller do
 
       expect(user.name).to eq("Updated Name")
       expect(response).to redirect_to(root_path)
+    end
+  end
+
+  describe "#after_sign_in_path_for" do
+    let(:user) { create(:user) }
+
+    it "ログイン後にposts_pathにリダイレクトすること" do
+      # サインインしてリダイレクト先を確認
+      sign_in user
+      expect(controller.after_sign_in_path_for(user)).to eq(posts_path)
     end
   end
 end
