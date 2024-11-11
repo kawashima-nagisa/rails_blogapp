@@ -1,13 +1,14 @@
-<h2 class="text-center my-4">ログイン</h2>
+<div class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+  <!-- フォーム全体をカードにし、影を追加 -->
+  <div class="card p-4 shadow" style="max-width: 500px; width: 100%;">
+    <h2 class="text-center my-4">ログイン</h2>
 
-<div class="container" style="max-width: 400px;">
-  <!-- カスタムバリデーションのための needs-validation クラスと novalidate 属性を追加 -->
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "needs-validation", novalidate: true }) do |f| %>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "needs-validation", novalidate: true }) do |f| %>
 
     <!-- メールアドレスフィールド -->
     <div class="mb-3">
-      <%= f.label :email, class: "form-label" %>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", required: true %>
+      <%= f.label :email, "メールアドレス", class: "form-label" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", required: true, placeholder: "example@example.com" %>
       <div class="invalid-feedback">
         有効なメールアドレスを入力してください。
       </div>
@@ -15,7 +16,7 @@
 
     <!-- パスワードフィールド -->
     <div class="mb-3">
-      <%= f.label :password, class: "form-label" %>
+      <%= f.label :password, "パスワード", class: "form-label" %>
       <div class="input-group">
         <%= f.password_field :password, autocomplete: "current-password", class: "form-control", id: "passwordField", required: true %>
         <button type="button" onclick="togglePasswordVisibility('passwordField', this)" class="btn btn-outline-secondary">
@@ -29,19 +30,22 @@
 
     <!-- 「ログイン情報を記憶する」チェックボックス -->
     <% if devise_mapping.rememberable? %>
-      <div class="form-check mb-3">
-        <%= f.check_box :remember_me, class: "form-check-input", id: "rememberMe" %>
-        <%= f.label :remember_me, "ログイン情報を記憶する", class: "form-check-label", for: "rememberMe" %>
-      </div>
+    <div class="form-check mb-3">
+      <%= f.check_box :remember_me, class: "form-check-input", id: "rememberMe" %>
+      <%= f.label :remember_me, "ログイン情報を記憶する", class: "form-check-label", for: "rememberMe" %>
+    </div>
     <% end %>
 
     <!-- ログインボタン -->
-    <div class="d-grid gap-2">
-      <%= f.submit "ログイン", class: "btn btn-primary" %>
+    <div class="d-grid gap-2 mb-3">
+      <%= f.submit "ログイン", class: "btn btn-primary py-2" %>
     </div>
-  <% end %>
+    <% end %>
 
-  <%= render "devise/shared/links" %>
+    <!-- リンク (新規登録やパスワードリセット) -->
+    <%= render "devise/shared/links" %>
+
+  </div>
 </div>
 
 <script>
@@ -54,11 +58,11 @@
   }
 
   // Bootstrapのカスタムバリデーション
-  (function () {
+  (function() {
     'use strict'
     var forms = document.querySelectorAll('.needs-validation')
-    Array.prototype.slice.call(forms).forEach(function (form) {
-      form.addEventListener('submit', function (event) {
+    Array.prototype.slice.call(forms).forEach(function(form) {
+      form.addEventListener('submit', function(event) {
         if (!form.checkValidity()) {
           event.preventDefault()
           event.stopPropagation()

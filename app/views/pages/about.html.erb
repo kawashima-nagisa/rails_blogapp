@@ -1,25 +1,9 @@
-<% breadcrumb :about %>
-
-
-
-
-<div class="about__skills">
-
-  <h5>Myskills</h5>
-
-  <ul>
-    <li>Rails</li>
-    <li>Apex</li>
-    <li>wordpress(php)</li>
-    <li>Next.js(簡単なブログアプリ程度)</li>
-    <li>wordpress(簡単なブログアプリ程度)</li>
-
-  </ul>
-
-</div>
-
-<div class="container mt-4 about-page">
-  <h1>私のQiita記事一覧</h1>
+<section class="container my-5 about-page">
+  <h2>Qiita記事一覧
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-book-half" viewBox="0 0 16 16">
+      <path d="M8.5 2.687c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783" />
+    </svg>
+  </h2>
   <div class="row g-4">
     <% if @articles.present? %>
     <% @articles.each do |article| %>
@@ -40,4 +24,134 @@
     <p>記事が見つかりませんでした。</p>
     <% end %>
   </div>
-</div>
+</section>
+
+
+
+<section class="section-top">
+
+  <section class="section-top-text">
+
+    <div class="section-top-text__content">
+
+
+      <div>
+        <h3>
+          自己紹介
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-book-half" viewBox="0 0 16 16">
+            <path d="M8.5 2.687c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783" />
+          </svg>
+
+        </h3>
+        <p>
+          初めまして 川島 渚と申します。現在は受託開発企業でエンジニアとして働いています。<br>
+          出身は大分県の別府市生まれ、幼いころから温泉と自然が身近にある環境で育ちました。<br>
+          大分県立短期大学卒業後に大分のシティホテルで２年、福岡のイタリアンレストランで２年働いておりました。当時は日本一のサービス人になりたいという夢があり、一心不乱に勉強を続けておりましたが、<br>
+          飲食業界の根幹の問題である人手不足による接客の質の低下という問題に日々悩んでおり、どうしたら解決できるのだと日々考えておりました。<br>
+          そんな中、コロナ渦中で知ったエンジニアという職業に惹かれ、プログラミングの勉強を行ってみたこと、<br>
+          またエンジニアの方が書かれた本との出会いで,エンジニアは勉強が好きな方・自発的に自分の頭で考えて行動する方が多いのではないか？　<br>
+          と思い、自身の性格面や、感じていた問題を解決する為の方法に合致していたことから、エンジニアになりたいと思うようになりました。<br>
+          その後、意を決してプログラミングスクールに半年ほど通いまして、現在はエンジニアとして働いております。<br>
+          特技と言えば、部活動全般で同じことが言えるのですが、最初何かを始めるとき、スタート地点での能力は人より格段に皆無なことが多いです。しかし、自身の傾向として、大器晩成型であるため、グラフでいうとy＝０からy = 10x(極端です)といえるくらい、成長スピードを上げて、追い上げてきました。<br>
+          その為、部活動で経験した弓道や水泳の分野において九州大会や県大会などに個人戦で出場し、成績を収めてきました。<br>
+          最も得意なものは長距離走で、体育の授業では女子で絶対に１位で帰ってくるとういことを目標にするほど、物事に対する熱意と執着心はあります。（結果的に体育教師に部活動引退後に駅伝出場の機会を頂くことが出来ました！）</p>
+        <p>
+          将来はバックエンドからフロントエンドまでフルスタックに業務をこなし、そして将来は人材の育成面に携わることが出来たらよいなと思っています。
+          どうぞよろしくお願いいたします。
+
+        </p>
+
+      </div>
+      <div>
+        <h3>Myskills
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-book-half" viewBox="0 0 16 16">
+            <path d="M8.5 2.687c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783" />
+          </svg>
+        </h3>
+        <p>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list-task" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M2 2.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5V3a.5.5 0 0 0-.5-.5zM3 3H2v1h1z" />
+            <path d="M5 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5M5.5 7a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1zm0 4a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1z" />
+            <path fill-rule="evenodd" d="M1.5 7a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5zM2 7h1v1H2zm0 3.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm1 .5H2v1h1z" />
+          </svg>
+          Rails
+        </p>
+        <p>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list-task" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M2 2.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5V3a.5.5 0 0 0-.5-.5zM3 3H2v1h1z" />
+            <path d="M5 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5M5.5 7a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1zm0 4a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1z" />
+            <path fill-rule="evenodd" d="M1.5 7a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5zM2 7h1v1H2zm0 3.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm1 .5H2v1h1z" />
+          </svg>
+          wordpress(php)
+        </p>
+        <p>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list-task" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M2 2.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5V3a.5.5 0 0 0-.5-.5zM3 3H2v1h1z" />
+            <path d="M5 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5M5.5 7a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1zm0 4a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1z" />
+            <path fill-rule="evenodd" d="M1.5 7a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5zM2 7h1v1H2zm0 3.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm1 .5H2v1h1z" />
+          </svg>
+          Apex
+        </p>
+        <p>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list-task" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M2 2.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5V3a.5.5 0 0 0-.5-.5zM3 3H2v1h1z" />
+            <path d="M5 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5M5.5 7a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1zm0 4a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1z" />
+            <path fill-rule="evenodd" d="M1.5 7a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5zM2 7h1v1H2zm0 3.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm1 .5H2v1h1z" />
+          </svg>
+          Next.js<br>(簡単なブログアプリ程度)
+        </p>
+        <p>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list-task" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M2 2.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5V3a.5.5 0 0 0-.5-.5zM3 3H2v1h1z" />
+            <path d="M5 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5M5.5 7a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1zm0 4a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1z" />
+            <path fill-rule="evenodd" d="M1.5 7a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5zM2 7h1v1H2zm0 3.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm1 .5H2v1h1z" />
+          </svg>
+          wordpress<br>(簡単なブログアプリ程度)
+        </p>
+      </div>
+    </div>
+  </section>
+</section>
+
+
+<section class="about-page-contact text-center py-5 row" style="position: relative;">
+  <div class=" mx-auto col-6">
+    <h2>お問い合わせはこちら</h2>
+    <p>ご不明な点がございましたらお気軽にお問い合わせください。</p>
+    <%= link_to "お問い合わせページへ", new_contact_form_path, class: "btn btn-success" , style: "z-index: 1;" %>
+  </div>
+
+</section>
+
+
+
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+
+  // 背景スタイルの変更関数
+  function applyBackgroundStyle() {
+    document.querySelector(".section-top-text").style.backgroundColor = "rgba(36, 35, 35, 0.302)";
+  }
+
+  function removeBackgroundStyle() {
+    document.querySelector(".section-top-text").style.backgroundColor = "transparent";
+  }
+
+  // アニメーションの設定
+  gsap.to(".section-top-text__content", {
+    y: "-100%", // テキスト要素を上にスクロールsection-top-text__contentの親要素であるsection-top-textがheight: 100%に設定されているため、実際にはsection-top-text__contentが自身の高さの100%分だけ移動しているのと同じ効果になります。これは、要素の高さが親要素の高さに依存しているため
+    ease: "none",
+    scrollTrigger: {
+      trigger: ".section-top",
+      start: "top top", // section-topが画面のトップに到達した時点でアニメーションが開始　トリガー要素の上端がビューポートの上端に到達したときにアニメーションを開始
+      end: () => "+=" + document.querySelector(".section-top-text__content").offsetHeight, // section-top-text__contentの高さに基づいてスクロール距離を設定
+      pin: ".section-top",
+      scrub: true, //スクロールの進行に応じてアニメーションが前後に動き、スクロールの速度や方向に合わせてアニメーションが再生
+      // markers: true,
+      onEnter: applyBackgroundStyle, // section-topがビューポートに入ったときに背景色を適用
+      onLeave: removeBackgroundStyle, // section-topがビューポートから出たときに背景色を削除
+      onEnterBack: applyBackgroundStyle, // section-topが逆方向からビューポートに戻ったときに背景色を適用
+      onLeaveBack: removeBackgroundStyle // section-topが逆方向からビューポートを離れたときに背景色を削除
+    }
+  });
+</script>

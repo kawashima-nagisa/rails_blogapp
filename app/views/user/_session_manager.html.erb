@@ -1,23 +1,24 @@
-
 <% if current_user %>
 <li class="nav-item dropdown">
   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <%= current_user.name %>
-     <% if current_user.profile_image.attached? %>
+    <% if current_user.profile_image.attached? %>
     <%= image_tag current_user.profile_image.variant(resize_to_limit: [30,  30]), class: "rounded-circle ", alt: "プロフィール画像" %>
-  <% end %>
+    <% end %>
   </a>
   <ul class="dropdown-menu">
 
-    <li><%= link_to "Home", root_path, class: "dropdown-item" %></li>
-    <li><%= link_to "Edit Account",  edit_user_registration_path, method:  :delete, class: "dropdown-item" %></li>
-    <li> <%= link_to "Password", edit_account_password_path, class: "dropdown-item" %></li>
+    <li><%= link_to "Home", root_path, class: "dropdown-item text-white" %></li>
+    <li><%= link_to "Edit Account",  edit_user_registration_path, method:  :delete, class: "dropdown-item text-white" %></li>
+    <li> <%= link_to "Password", edit_account_password_path, class: "dropdown-item text-white" %></li>
 
-    <li><hr class="dropdown-divider"></li>
-    <li><%= button_to "Sign out",  destroy_user_session_path, method:  :delete, class: "dropdown-item" %></li>
+    <li>
+      <hr class="dropdown-divider">
+    </li>
+    <li><%= button_to "Sign out",  destroy_user_session_path, method:  :delete, class: "dropdown-item text-white" %></li>
   </ul>
 </li>
 <% else %>
- <li><%= link_to "Sign up", new_user_registration_path, class: "nav-link" %></li>
- <li><%= link_to "Login", new_user_session_path, class: "nav-link" %></li>
+<li><%= link_to "Sign up", new_user_registration_path, class: "nav-link text-white" %></li>
+<li><%= link_to "Login", new_user_session_path, class: "nav-link text-white" %></li>
 <% end %>
