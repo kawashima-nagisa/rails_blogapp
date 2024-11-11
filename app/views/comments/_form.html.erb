@@ -1,7 +1,7 @@
 <%= form_with(model:[post, comment]) do |f| %>
-<div class="fotm-control border p-3 my-4">
-<%= f.rich_text_area :body %>
-<%= f.submit submit_label, class: "btn btn-primary mt-1" %>
+<div class="fotm-control border p-3 my-4 , bg-white">
+  <%= f.rich_text_area :body %>
+  <%= f.submit submit_label, class: "btn btn-primary mt-1" %>
 
 </div>
 
