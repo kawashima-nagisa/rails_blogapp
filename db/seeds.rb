@@ -30,7 +30,7 @@ categories = Category.all
 30.times do
   title = Faker::Book.title
 
-  while title.length < 5
+  while title.length < 5|| title.length > 10
     title = Faker::Book.title
   end
   Post.create!(
@@ -62,11 +62,3 @@ end
   )
 end
 
-# 通知の生成
-users.each do |user|
-  Notification.create!(
-    recipient: user,
-    type: "NewCommentNotification",
-    params: {message: "あなたの投稿に新しいコメントがあります"}
-  )
-end

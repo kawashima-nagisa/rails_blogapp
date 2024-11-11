@@ -22,8 +22,7 @@ default: &default
 development:
   <<: *default
   database: rails_blogapp_development
-  host: localhost
-  port: 5432
+  host: postgres
 
   # The specified database role being used to connect to PostgreSQL.
   # To create additional roles in PostgreSQL see `$ createuser --help`.

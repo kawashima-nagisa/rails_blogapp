@@ -1,0 +1,13 @@
+{
+  "name": "MyBlog",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "web",
+  "workspaceFolder": "/app",
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {
+      "version": "latest"
+    }
+  },
+
+  "postCreateCommand": "bundle install"
+}
