@@ -1,6 +1,6 @@
 # rootページ
 crumb :root do
-  link "Home", root_path
+  link '<i class="bi bi-house-fill"></i>Home'.html_safe, root_path
 end
 
 # Aboutページ
