@@ -30,7 +30,7 @@ categories = Category.all
 30.times do
   title = Faker::Book.title
 
-  while title.length < 5|| title.length > 10
+  while title.length < 5 || title.length > 10
     title = Faker::Book.title
   end
   Post.create!(
@@ -61,4 +61,3 @@ end
     message: Faker::Lorem.paragraph(sentence_count: 4)
   )
 end
-
