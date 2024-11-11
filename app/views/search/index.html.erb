@@ -1,32 +1,33 @@
-<h5 class="text-center"><%= pluralize(@posts.count, "件", "件") %>の検索結果</h5>
-
 <div class="container">
-<table class="table table-dark table-striped">
-  <thead>
-    <tr>
-      <th><%= sort_link(@q, :title, "投稿のタイトル", default_order: :asc) %></th>
-      <th><%= sort_link(@q, :body, "投稿の内容", default_order: :desc) %></th>
-      <th><%= sort_link(@q, :user_name, "ユーザー名", default_order: :desc) %></th>
-      <th><%= sort_link(@q, :category_name, default_order: :asc) %>
-      <th><%= sort_link(@q, :created_at, "投稿日時", default_order: :desc) %></th>
-      <th><%= sort_link(@q, :updated_at, "更新日時", default_order: :desc) %></th>
-
-    </tr>
-
-  </thead>
-  <tbody>
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
     <% @posts.each do |post| %>
-      <tr>
-        <td><%= link_to post.title, post %></td>
-        <td><%= post.body.truncate_words(25) %></td>
-          <td><%= post.user&.name %></td>
-          <td><%= post.category&.name %></td>
-          <td><%= post.created_at.in_time_zone("Asia/Tokyo").strftime("%Y年%m月%d日") %></td>
-          <td><%= post.updated_at.in_time_zone("Asia/Tokyo").strftime("%Y年%m月%d日") %></td>
-      </tr>
+    <div class="col">
+      <%= link_to post, class: "text-decoration-none" do %>
+      <div class="card h-100 shadow-sm">
+        <div class="card-body">
+          <!-- 投稿のタイトル -->
+          <h5 class="card-title text-dark"><%= post.title %></h5>
+
+          <!-- 投稿の内容 -->
+          <p class="card-text text-muted"><%= post.body.truncate_words(20) %></p>
+
+          <!-- 投稿者とカテゴリー情報 -->
+          <div class="d-flex justify-content-between align-items-center">
+            <small class="text-muted">
+              <i class="bi bi-person"></i> <%= post.user&.name %>
+              | <i class="bi bi-tag"></i> <%= post.category&.name %>
+            </small>
+          </div>
+
+          <!-- 投稿日時と更新日時 -->
+          <div class="mt-2">
+            <small class="text-muted">投稿: <%= post.created_at.strftime("%Y年%m月%d日") %></small><br>
+            <small class="text-muted">更新: <%= post.updated_at.strftime("%Y年%m月%d日") %></small>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
     <% end %>
-  </tbody>
-
-</table>
-
+  </div>
 </div>

@@ -1,44 +1,43 @@
-
 <% breadcrumb :posts %>
 <div class="container">
-<div class="row  d-flex justify-content-between">
-<!-- 投稿一覧表示 -->
-  <div id="posts" class="col-9">
-   <h1><%= @category ? "#{@category.name}の投稿一覧" : "投稿された記事一覧" %></h1>
-   <span> <!-- 新しい記事をモーダルで作成 -->
-  <%= link_to "新しい記事を作成する", new_post_path, data: { turbo_frame: "modal" }, class: "btn btn-success mb-4" %>
-  </span>
-    <% @posts.each do |post| %>
+  <div class="row d-flex justify-content-between">
+    <!-- 投稿一覧表示 -->
+    <div id="posts" class="col-md-9 col-12">
+      <h1><%= @category ? "#{@category.name}の投稿一覧" : "投稿された記事一覧" %></h1>
+      <span>
+        <!-- 新しい記事をモーダルで作成 -->
+        <%= link_to "新しい記事を作成する", new_post_path, data: { turbo_frame: "modal" }, class: "btn btn-success mb-4" %>
+      </span>
+      <% @posts.each do |post| %>
       <%= render partial: "post", locals: { post: post, show_full_content: @show_full_content } %>
-    <% end %>
+      <% end %>
       <!-- ページネーションリンク -->
       <%= paginate @posts %>
-  </div>
-
-   <div class="mt-5 col-3">
-    <!-- 最新の３つの記事を表示する -->
-    <div>
-    <h2>最新の記事</h2>
-      <% @recent_posts.each do |recent_post| %>
-        <div>
-          <%= render partial: "post", locals: { post: recent_post,show_full_content: @show_full_content} %>
-        </div>
-      <% end %>
     </div>
 
-      <!-- カテゴリー名 (投稿数)のような形で表示 -->
+    <!-- サイドバー（最新記事とカテゴリー） -->
+    <div class="col-md-3 col-12 mt-5">
+      <!-- 最新の3つの記事を表示 -->
+      <div class="mb-4">
+        <h2>最新の記事</h2>
+        <% @recent_posts.each do |recent_post| %>
+        <div class="mb-3">
+          <%= render partial: "post", locals: { post: recent_post, show_full_content: @show_full_content } %>
+        </div>
+        <% end %>
+      </div>
+
+      <!-- カテゴリーリスト -->
       <div class="mt-4">
         <h2>カテゴリー</h2>
         <ul class="list-unstyled">
           <% @categories.each do |category| %>
-            <li>
-              <%= link_to "#{category.name} (#{category.posts_count})", category_posts_path(category) %>
-            </li>
+          <li>
+            <%= link_to "#{category.name} (#{category.posts_count})", category_posts_path(category), class: "d-block py-1" %>
+          </li>
           <% end %>
         </ul>
       </div>
-
+    </div>
   </div>
-
-</div>
 </div>
