@@ -1,7 +1,7 @@
 <%= search_form_for(@q, url: search_path, method: :get, class: 'd-flex') do |f| %>
 <%
 =begin
-  %>
+%>
 <%= f.search_field :title_or_body_or_user_email_or_user_name_or_category_name_cont_any, placeholder: "検索キーワードを入力", class: 'form-control me-2' %>
 <%
 =end
@@ -14,7 +14,7 @@
 </div>
 
 <!-- 開始日フィールド -->
-<%= f.label :created_at_gteq, "投稿開始日" , class: "text-white"%>
+<%= f.label :created_at_gteq, "投稿開始日" , class: "text-white" %>
 <%= f.date_field :created_at_gteq, class: 'form-control me-2', placeholder: '年/月/日', include_blank: true %>
 
 <!-- 終了日フィールド（カスタム述語を使用） -->

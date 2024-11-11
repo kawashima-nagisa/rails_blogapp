@@ -1,4 +1,4 @@
-require 'faker'
+require "faker"
 
 # テスト用の固定ユーザー
 User.find_or_create_by!(email: "testuser@example.com") do |user|
@@ -12,8 +12,8 @@ end
   User.create!(
     email: Faker::Internet.unique.email,
     name: Faker::Name.name,
-    password: 'password',
-    password_confirmation: 'password'
+    password: "password",
+    password_confirmation: "password"
   )
 end
 
@@ -28,7 +28,6 @@ users = User.all
 categories = Category.all
 
 30.times do
-
   title = Faker::Book.title
 
   while title.length < 5
@@ -68,7 +67,6 @@ users.each do |user|
   Notification.create!(
     recipient: user,
     type: "NewCommentNotification",
-    params: { message: "あなたの投稿に新しいコメントがあります" }
+    params: {message: "あなたの投稿に新しいコメントがあります"}
   )
 end
-
