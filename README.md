@@ -21,11 +21,10 @@ MyBlogは、Ruby on Rails7を使用して作成したブログアプリケーシ
 
 ## 依存関係について
 - PostgreSQL
-- SQLite3（sqlite3 Gem）
 - Active Storage（image_processingおよびmini_magick Gem）
 - Devise
-- reCAPTCHA フォーム送信の認証（スパム対策）。
-- Noticed: 通知の作成と配信
+- reCAPTCHA フォーム送信の認証（
+- Noticed
 - Bootstrap 5
 - Stimulus
 - Importmap
