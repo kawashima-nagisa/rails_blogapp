@@ -50,6 +50,7 @@ gem "mini_magick"
 gem "gretel"
 
 gem "kaminari"
+gem 'rails-i18n'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
