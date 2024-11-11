@@ -23,7 +23,7 @@ MyBlogは、Ruby on Rails7を使用して作成したブログアプリケーシ
 - PostgreSQL
 - Active Storage（image_processingおよびmini_magick Gem）
 - Devise
-- reCAPTCHA フォーム送信の認証（
+- reCAPTCHA フォーム送信の認証
 - Noticed
 - Bootstrap 5
 - Stimulus
