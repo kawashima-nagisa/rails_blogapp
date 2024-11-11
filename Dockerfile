@@ -11,7 +11,7 @@ FROM ruby:3.1.2
 
 # 必要なパッケージをインストール
 RUN apt-get update -qq && \
-    apt-get install -y nodejs postgresql-client graphviz imagemagick
+    apt-get install -y nodejs postgresql-client graphviz imagemagick libvips
 
 WORKDIR /app
 
