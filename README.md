@@ -19,22 +19,33 @@ MyBlogは、Ruby on Rails7を使用して作成したブログアプリケーシ
 
 `.ruby-version`ファイルを参照してください。
 
-## 依存関係について
-- PostgreSQL
-- Active Storage（image_processingおよびmini_magick Gem）
-- Devise
-- reCAPTCHA フォーム送信の認証
-- Noticed
-- Bootstrap 5
-- Stimulus
-- Importmap
-- Ransack
-- Kaminari
-- Gretel
-- Rails i18n
-- Faker:
-- Brakeman
-- Letter Opener Web
+## 依存関係
+
+このプロジェクトは、以下のGemやサービスに依存しています。
+
+- **Docker環境**：開発環境のコンテナ化
+- **PostgreSQL**：データベース（デフォルト設定）
+- **Active Storage**：画像やファイルの保存（image_processing、mini_magick使用）
+- **Devise**：認証機能
+- **reCAPTCHA**：フォーム認証用API
+- **Noticed**：通知機能
+- **Bootstrap 5**：スタイルフレームワーク
+- **Stimulus**：JavaScriptコントローラーの管理
+- **Importmap**：ESMモジュールの管理
+- **Ransack**：検索機能
+- **Kaminari**：ページネーション
+- **Gretel**：パンくずリスト
+- **Rails i18n**：国際化
+- **Faker**：ダミーデータ生成（開発/テスト用）
+- **Brakeman**：セキュリティ分析ツール
+- **Letter Opener Web**：開発環境でのメール確認
+
+## テスト関連依存関係
+
+- **RSpec Rails**：Railsテストフレームワーク
+- **FactoryBot Rails**：テストデータの生成
+- **Shoulda Matchers**：簡易的なバリデーションおよび関連付けのテスト
+
 
 ## 使用したツール
 - Brevo
