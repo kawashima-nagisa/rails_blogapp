@@ -28,8 +28,14 @@ users = User.all
 categories = Category.all
 
 30.times do
+
+  title = Faker::Book.title
+
+  while title.length < 5
+    title = Faker::Book.title
+  end
   Post.create!(
-    title: Faker::Book.title,
+    title: title,
     body: Faker::Lorem.paragraph(sentence_count: 10),
     user: users.sample,
     category: categories.sample
