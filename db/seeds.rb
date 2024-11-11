@@ -1,38 +1,68 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+require 'faker'
 
-User.create(
-  email: "hoge@example.com",
-  name: "hoge hoge",
-  password: "password",
-  password_confirmation: "password"
-)
-User.create(
-  email: "hoge2@example.com",
-  name: "hoge2 hoge2",
-  password: "password",
-  password_confirmation: "password"
-)
+# テスト用の固定ユーザー
+User.find_or_create_by!(email: "testuser@example.com") do |user|
+  user.name = "Test User"
+  user.password = "password"
+  user.password_confirmation = "password"
+end
 
-Category.create(name: "PHP")
-Category.create(name: "Java")
-Category.create(name: "Next.js")
-Category.create(name: "Rails")
-Category.create(name: "Apex")
-
-# 記事の作成とランダムカテゴリの割り当て
-10.times do |x|
-  Post.create(
-    title: "title#{x}",
-    body: "body#{x}",
-    user_id: User.first.id,
-    category_id: Category.pluck(:id).sample # ランダムなカテゴリIDを割り当て
+# Fakerを使って追加のユーザーを生成
+4.times do
+  User.create!(
+    email: Faker::Internet.unique.email,
+    name: Faker::Name.name,
+    password: 'password',
+    password_confirmation: 'password'
   )
 end
+
+# カテゴリの生成
+categories = %w[PHP Java Next.js Rails Apex]
+categories.each do |category_name|
+  Category.find_or_create_by!(name: category_name)
+end
+
+# 投稿の生成
+users = User.all
+categories = Category.all
+
+30.times do
+  Post.create!(
+    title: Faker::Book.title,
+    body: Faker::Lorem.paragraph(sentence_count: 10),
+    user: users.sample,
+    category: categories.sample
+  )
+end
+
+# コメントの生成
+posts = Post.all
+users = User.all
+
+50.times do
+  Comment.create!(
+    post: posts.sample,
+    user: users.sample,
+    body: Faker::Lorem.sentence(word_count: 15)
+  )
+end
+
+# 問い合わせの生成
+10.times do
+  ContactForm.create!(
+    name: Faker::Name.name,
+    email: Faker::Internet.email,
+    message: Faker::Lorem.paragraph(sentence_count: 4)
+  )
+end
+
+# 通知の生成
+users.each do |user|
+  Notification.create!(
+    recipient: user,
+    type: "NewCommentNotification",
+    params: { message: "あなたの投稿に新しいコメントがあります" }
+  )
+end
+
