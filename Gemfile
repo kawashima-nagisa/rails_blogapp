@@ -52,6 +52,7 @@ gem "gretel"
 gem "kaminari"
 gem "rails-i18n"
 gem "faker"
+gem "recaptcha"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -72,7 +73,6 @@ group :development do
   gem "better_errors"
   gem "letter_opener_web", "~> 2.0"
   gem "syntax_tree"
-  gem "recaptcha"
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 
