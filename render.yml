@@ -7,9 +7,11 @@ databases:
 services:
   - type: web
     name: rails_blogapp
-    env: docker
+    env: ruby
     region: oregon
     plan: free
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec puma -C config/puma.rb"
     envVars:
       - key: DATABASE_URL
         fromDatabase:
