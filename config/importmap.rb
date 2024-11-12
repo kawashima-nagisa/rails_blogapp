@@ -12,3 +12,4 @@ pin "bootstrap", to: "bootstrap.min.js", preload: true
 pin "trix"
 pin "@rails/actiontext", to: "actiontext.esm.js"
 pin "stimulus-autocomplete" # @3.1.0
+pin_all_from "app/javascript/controllers", under: "controllers"
