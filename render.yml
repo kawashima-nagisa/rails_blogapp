@@ -1,0 +1,22 @@
+databases:
+  - name: rails_blogapp_DB
+    databaseName: rails_blogapp_db
+    user: rails_blogapp
+    region: oregon
+
+services:
+  - type: web
+    name: rails_blogapp
+    env: docker
+    region: oregon
+    plan: free
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec puma -C config/puma.rb"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: rails_blogapp_DB
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
+
