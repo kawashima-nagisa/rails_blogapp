@@ -40,6 +40,12 @@ class ContactFormsController < ApplicationController
       )
     result = JSON.parse(response.body)
     Rails.logger.info "reCAPTCHA result: #{result}"
+
+
+      # reCAPTCHAリクエストのステータスコード確認
+    unless result["success"]
+      Rails.logger.error "reCAPTCHA認証に失敗しました: #{result['error-codes']}"
+    end
     result["success"] && result["score"].to_f > 0.5
   end
 end
