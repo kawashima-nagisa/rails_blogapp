@@ -49,6 +49,6 @@ class ContactFormsController < ApplicationController
     unless result["success"]
       Rails.logger.error "reCAPTCHA認証に失敗しました: #{result["error-codes"]}"
     end
-    result["success"] && result["score"].to_f > 0.3
+    result["success"] && result["score"].to_f > 0.5
   end
 end
