@@ -6,16 +6,20 @@ class ContactFormsController < ApplicationController
   end
 
   def create
-    # reCAPTCHA トークンをパラメータから取得
     recaptcha_token = params[:contact_form][:recaptcha_token]
-
-    # reCAPTCHA トークンを検証
+    # reCAPTCHA トークンの検証とContactFormの生成
     if verify_recaptcha(recaptcha_token)
-      @contact_form = ContactForm.new(contact_form_params) # recaptcha_tokenは含めない
+      @contact_form = ContactForm.new(contact_form_params)
       if @contact_form.save
-        ContactFormMailer.send_mail(@contact_form).deliver_now
-        ContactFormMailer.thanks_mail(@contact_form).deliver_now
-        redirect_to root_path, notice: "お問い合わせを受け付けました"
+        begin
+          ContactFormMailer.send_mail(@contact_form).deliver_now
+          ContactFormMailer.thanks_mail(@contact_form).deliver_now
+          redirect_to "/", notice: "お問い合わせを受け付けました"
+        rescue => e
+          Rails.logger.error "メール送信後のエラー: #{e.message}"
+          flash[:alert] = "エラーが発生しました。管理者に連絡してください。"
+          render :new
+        end
       else
         render :new
       end
@@ -41,11 +45,10 @@ class ContactFormsController < ApplicationController
     result = JSON.parse(response.body)
     Rails.logger.info "reCAPTCHA result: #{result}"
 
-
-      # reCAPTCHAリクエストのステータスコード確認
+    # reCAPTCHAリクエストのステータスコード確認
     unless result["success"]
-      Rails.logger.error "reCAPTCHA認証に失敗しました: #{result['error-codes']}"
+      Rails.logger.error "reCAPTCHA認証に失敗しました: #{result["error-codes"]}"
     end
-    result["success"] && result["score"].to_f > 0.5
+    result["success"] && result["score"].to_f > 0.3
   end
 end
