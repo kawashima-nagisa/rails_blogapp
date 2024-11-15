@@ -317,6 +317,7 @@ GEM
     rdoc (6.7.0)
       psych (>= 4.0.0)
     recaptcha (5.17.0)
+    redcarpet (3.6.0)
     regexp_parser (2.9.2)
     reline (0.5.9)
       io-console (~> 0.5)
@@ -464,6 +465,7 @@ DEPENDENCIES
   rails-i18n
   ransack (~> 4.2)
   recaptcha
+  redcarpet
   rspec-rails (~> 6.0)
   sassc-rails (~> 2.1)
   selenium-webdriver

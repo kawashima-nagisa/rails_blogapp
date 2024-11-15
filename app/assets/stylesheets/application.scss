@@ -171,3 +171,11 @@ form#post_search {
   }
 }
 
+
+.truncated-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* 表示する行数 */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

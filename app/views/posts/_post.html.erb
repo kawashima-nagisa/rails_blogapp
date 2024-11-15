@@ -26,14 +26,14 @@
   <div class="card-body">
     記事の内容:
     <% if defined?(show_full_content) && show_full_content %>
-    <%= post.body %>
+    <%= markdown(post.body) %>
+    <!-- 全文表示 -->
+
     <% else %>
-    <%= truncate(post.body, length: 30) %>
-    <% if post.body.length > 30 %>
-    <%= link_to '続きを表示する', post_path(post.id), class:"btn btn-outline-success " %>
-    <% else %>
-    <%= link_to '記事の詳細へ', post_path(post.id), class:"btn btn-outline-success " %>
-    <% end %>
+    <div class="truncated-text">
+      <p class="card-text text-muted"><%= markdown(post.body) %></p> <!-- 行数制限で短縮表示 -->
+    </div>
+    <%= link_to '続きを表示する', post_path(post.id), class: "btn btn-outline-success" %>
     <% end %>
     <div>
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-tag-fill" viewBox="0 0 16 16">
