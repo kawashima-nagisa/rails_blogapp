@@ -53,7 +53,7 @@ gem "kaminari"
 gem "rails-i18n"
 gem "faker"
 gem "recaptcha"
-gem 'redcarpet'
+gem "redcarpet"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
