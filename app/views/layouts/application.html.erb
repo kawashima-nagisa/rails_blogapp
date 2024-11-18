@@ -2,10 +2,18 @@
 <html>
 
 <head>
-  <title>RailsBlog</title>
+  <title>MyBlog</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
+  <meta name="description" content="Kawashimaの個人ブログアプリです。">
+  <meta name="keywords" content="ブログ, Kawashima, 個人ブログ, プログラミング, 技術">
+  <meta property="og:title" content="MyBlog - Kawashimaの個人ブログ" />
+  <meta property="og:description" content="Kawashimaの個人ブログアプリです。日々のプログラミングや技術に関する投稿。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="<%= request.original_url %>" />
+  <link rel="canonical" href="<%= url_for(only_path: false) %>" />
+  <meta property="og:image" content="<%= asset_path('ogp.webp') %>" />
 
   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   <%= javascript_importmap_tags %>
