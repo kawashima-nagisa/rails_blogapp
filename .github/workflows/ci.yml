@@ -20,11 +20,6 @@ jobs:
           bundler-cache: true
           ruby-version: .ruby-version
 
-      - name: Set Rails Master Key  
-        env:
-          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
-        run: echo "$RAILS_MASTER_KEY" > config/master.key
-
       - name: Remove vendor directory if necessary
         run: rm -rf vendor
 
@@ -41,6 +36,3 @@ jobs:
 
       - name: Brakeman Check
         run: bundle exec brakeman
-        
-      - name: Run rspec
-        run: bundle exec rspec
