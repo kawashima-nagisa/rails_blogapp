@@ -3,55 +3,59 @@
 
 <div class="container" style="max-width: 500px;">
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "needs-validation", novalidate: true }) do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
+  <%= render "devise/shared/error_messages", resource: resource %>
 
-    <!-- メールアドレス -->
+  <!-- メールアドレス -->
+  <div class="mb-3">
+    <%= f.label :email, "メールアドレス", class: "form-label" %>
+    <%= f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email", required: true %>
+    <div class="invalid-feedback">有効なメールアドレスを入力してください。</div>
+  </div>
+
+  <!-- 名前 -->
+  <div class="mb-3">
+    <%= f.label :name, "名前", class: "form-label" %>
+    <%= f.text_field :name, class: "form-control", autofocus: true, autocomplete: "name", required: true, maxlength: 30 %>
+    <div class="invalid-feedback">名前を入力してください（30文字以内）。</div>
+  </div>
+
+  <!-- プロフィール画像 -->
+  <div class="mb-3">
+    <%= f.label :profile_image, "プロフィール画像", class: "form-label" %>
+    <%= f.file_field :profile_image, class: "form-control" %>
+    <% if resource.profile_image.attached? %>
+    <p>現在のプロフィール画像:</p>
+    <%= image_tag resource.profile_image_as_thumbnail, class: "rounded-circle img-thumbnail" if resource.profile_image_as_thumbnail %>
+    <div class="form-check mt-2">
+      <%= f.check_box :remove_profile_image, class: "form-check-input" %>
+      <%= f.label :remove_profile_image, "プロフィール画像を削除", class: "form-check-label" %>
+    </div>
+    <% end %>
+  </div>
+  <!-- SNSリンク (オプション) -->
+  <div class="sns-link my-4">
+    <h4>SNS URL (任意)</h4>
+
     <div class="mb-3">
-      <%= f.label :email, "メールアドレス", class: "form-label" %>
-      <%= f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email", required: true %>
-      <div class="invalid-feedback">有効なメールアドレスを入力してください。</div>
+      <%= f.label :twitter, "Twitter URL", class: "form-label" %>
+      <%= f.text_field :twitter, placeholder: "例: https://twitter.com/username", class: "form-control" %>
     </div>
 
-    <!-- 名前 -->
     <div class="mb-3">
-      <%= f.label :name, "名前", class: "form-label" %>
-      <%= f.text_field :name, class: "form-control", autofocus: true, autocomplete: "name", required: true, maxlength: 30 %>
-      <div class="invalid-feedback">名前を入力してください（30文字以内）。</div>
+      <%= f.label :facebook, "Facebook URL", class: "form-label" %>
+      <%= f.text_field :facebook, placeholder: "例: https://facebook.com/username", class: "form-control" %>
     </div>
 
-    <!-- プロフィール画像 -->
     <div class="mb-3">
-      <%= f.label :profile_image, "プロフィール画像", class: "form-label" %>
-      <%= f.file_field :profile_image, class: "form-control" %>
-      <% if resource.profile_image.attached? %>
-        <p>現在のプロフィール画像:</p>
-        <%= image_tag resource.profile_image_as_thumbnail, class: "rounded-circle img-thumbnail" if resource.profile_image_as_thumbnail %>
-      <% end %>
+      <%= f.label :github, "GitHub URL", class: "form-label" %>
+      <%= f.text_field :github, placeholder: "例: https://github.com/username", class: "form-control" %>
     </div>
-    <!-- SNSリンク (オプション) -->
-    <div class="sns-link my-4">
-      <h4>SNS URL (任意)</h4>
+  </div>
 
-      <div class="mb-3">
-        <%= f.label :twitter, "Twitter URL", class: "form-label" %>
-        <%= f.text_field :twitter, placeholder: "例: https://twitter.com/username", class: "form-control" %>
-      </div>
-
-      <div class="mb-3">
-        <%= f.label :facebook, "Facebook URL", class: "form-label" %>
-        <%= f.text_field :facebook, placeholder: "例: https://facebook.com/username", class: "form-control" %>
-      </div>
-
-      <div class="mb-3">
-        <%= f.label :github, "GitHub URL", class: "form-label" %>
-        <%= f.text_field :github, placeholder: "例: https://github.com/username", class: "form-control" %>
-      </div>
-    </div>
-
-    <!-- 更新ボタン -->
-    <div class="d-grid gap-2">
-      <%= f.submit "更新する", class: "btn btn-primary" %>
-    </div>
+  <!-- 更新ボタン -->
+  <div class="d-grid gap-2">
+    <%= f.submit "更新する", class: "btn btn-primary" %>
+  </div>
   <% end %>
 
   <!-- アカウント削除ボタン -->
@@ -75,12 +79,12 @@
   }
 
   // Bootstrapのカスタムバリデーション
-  (function () {
+  (function() {
     'use strict';
     var forms = document.querySelectorAll('.needs-validation');
     Array.prototype.slice.call(forms)
-      .forEach(function (form) {
-        form.addEventListener('submit', function (event) {
+      .forEach(function(form) {
+        form.addEventListener('submit', function(event) {
           if (!form.checkValidity()) {
             event.preventDefault();
             event.stopPropagation();

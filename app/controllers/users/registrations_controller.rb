@@ -80,7 +80,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:name])
   end
 
   # If you have extra params to permit, append them to the sanitizer.
@@ -92,13 +91,20 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def update_resource(resource, params)
-    resource.update_without_password(params)
+    # `remove_profile_image`が選択された場合に画像を削除
+    if params[:remove_profile_image] == "1"
+      resource.profile_image.purge
+    end
+
+    # パスワードなしで他の属性を更新
+    resource.update_without_password(params.except(:remove_profile_image))
   end
+
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(
       :account_update,
-      keys: %i[twitter facebook github name bio]
+      keys: %i[twitter facebook github name bio remove_profile_image]
     )
   end
 
