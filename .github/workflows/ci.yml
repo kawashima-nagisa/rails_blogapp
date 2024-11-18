@@ -1,13 +1,3 @@
-name: Tests
-
-on:
-  pull_request:
-    branches:
-      - "*"
-  push:
-    branches:
-      - main
-
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -26,11 +16,15 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          bundler: latest 
+          bundler: latest
           bundler-cache: true
           ruby-version: .ruby-version
 
-  
+      - name: Set Rails Master Key
+        env:
+          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+        run: echo "$RAILS_MASTER_KEY" > config/master.key
+
       - name: Remove vendor directory if necessary
         run: rm -rf vendor
 
@@ -50,5 +44,3 @@ jobs:
         
       - name: Run rspec
         run: bundle exec rspec
-
-  
