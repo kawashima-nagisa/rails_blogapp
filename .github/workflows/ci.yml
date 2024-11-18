@@ -35,7 +35,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update && sudo apt-get install -y -qq libvips
-          bundle install
+          bundle install --without error_highlight
 
       - name: Standardrb Check
         run: bundle exec standardrb
