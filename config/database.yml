@@ -57,7 +57,9 @@ development:
 test:
   <<: *default
   database: rails_blogapp_test
-
+  username: postgres
+  password: password
+  host: postgres # GitHub Actionsでも同様に`postgres`と指定
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
 # ever seen by anyone, they now have access to your database.
