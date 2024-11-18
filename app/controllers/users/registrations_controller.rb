@@ -44,6 +44,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # アカウント更新時のパラメータの許可
   def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
     # profile_imageを配列で許可
     devise_parameter_sanitizer.permit(
       :account_update,
