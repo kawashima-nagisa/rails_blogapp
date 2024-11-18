@@ -11,8 +11,6 @@ export default class extends Controller {
     const chartData = JSON.parse(this.canvasTarget.dataset.chartData);
     console.log(chartData);
     // Canvasのサイズを指定（幅と高さを調整）
-    this.canvasTarget.width = 800; // 幅を800pxに固定
-    this.canvasTarget.height = 200; // 高さを200pxに設定して7日分が均等に表示されるようにする
 
     // Matrixチャートの初期化
     new Chart(ctx, {
