@@ -35,7 +35,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def verify_recaptcha(token)
     response = Net::HTTP.post_form(
       URI.parse(RECAPTCHA_SITEVERIFY_URL),
-      { "secret" => RECAPTCHA_SECRET_KEY, "response" => token }
+      {"secret" => RECAPTCHA_SECRET_KEY, "response" => token}
     )
     result = JSON.parse(response.body)
     Rails.logger.info "reCAPTCHA result: #{result}" # デバッグ用ログ
@@ -51,7 +51,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     )
   end
 
-  
   # パスワードなしでユーザー情報を更新するためのメソッド
   def update_resource(resource, params)
     # `remove_profile_image`が「1」の場合はプロフィール画像を削除
