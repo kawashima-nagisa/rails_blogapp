@@ -16,6 +16,7 @@
 
 @import "bootstrap";
 @import "about";
+@import "common";
 
 // リセットcssの始まり
 html,
@@ -214,13 +215,17 @@ a {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 1000;
+  z-index: 100;
   width: 50%;
   background-color: #d4edda;
   padding: 20px;
   border: 1px solid #c3e6cb;
   border-radius: 5px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  @include mq(sp) {
+    width: 80%;
+  }
+  
 }
 
 .autocomplete-results {
