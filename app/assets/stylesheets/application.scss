@@ -158,6 +158,10 @@ header {
 a {
   color: #507465 ;
 }
+.container {
+  max-width: 1200px;
+  width: 95%;
+}
 
 // ------------------------------------------
 .modal {
@@ -166,22 +170,28 @@ a {
   z-index: 1;
   padding: 2em;
 
-  width: 30%;
-  aspect-ratio: 1/1;
+  width: 40%;
+  max-width: 500px;
+  aspect-ratio: 1/1.2;
   height: auto;
-  /* Centering */
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-
   overflow: auto;
   background-color: rgb(0, 0, 0);
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 5px;
-  /* Add the drop shadow */
   box-shadow:
     0 0 10px 0 rgba(0, 0, 0, 0.2),
     0 5px 10px 0 rgba(0, 0, 0, 0.19);
+    @include mq(md) {
+      padding: 1rem;
+      aspect-ratio: 2/3;
+      width: 50%;
+    }
+    @include mq(sp) {
+      width: 80%;
+    }
 }
 
 .cancel-button {
@@ -279,14 +289,16 @@ form#post_search {
 
 .pagination {
   margin-top: 20px;
-  .page-item.active .page-link {
+  .page-item.active .page-link  {
     background-color: #28a745; /* アクティブなページの背景を緑色に */
     color: white;
     border-color: #28a745;
+    border-radius: 50%;
   }
   .page-link {
     color: #28a745; /* リンクのテキストを緑色に */
     border: 1px solid #28a745;
+    border-radius: 50%;
     &:hover {
       background-color: #218838; /* ホバー時に濃い緑に変更 */
       color: white;
@@ -297,6 +309,11 @@ form#post_search {
     background-color: #e9ecef;
     border-color: #e9ecef;
   }
+  .page-item:last-child .page-link , .page-item:not(:first-child) .page-link,   .page-item:first-child .page-link {
+    border-radius: 50%;
+  }
+
+  
 }
 
 

@@ -2,10 +2,10 @@
 import "@hotwired/turbo-rails";
 import "popper";
 import "bootstrap";
-
 import "trix";
 import "@rails/actiontext";
 import "controllers";
+import "@rails/ujs" 
 
 document.addEventListener("turbo:frame-missing", (event) => {
   const {
