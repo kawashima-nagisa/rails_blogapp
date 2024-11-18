@@ -36,7 +36,7 @@ class User < ApplicationRecord
 
   def profile_image_as_thumbnail
     if profile_image.attached? &&
-        profile_image.content_type.in?(%w[image/jpeg image/png])
+        profile_image.content_type.in?(%w[image/jpeg image/png image/webp])
       profile_image.variant(resize_to_limit: [100, 100]).processed
     end
   end
