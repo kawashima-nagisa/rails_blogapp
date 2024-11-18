@@ -150,17 +150,15 @@ body {
 main {
   width: 100%;
   height: 100vh;
+  padding-top: 140px;
 }
 header {
   background: url(asset-path("header.webp")) center/cover;
 }
 a {
-  text-decoration: none;
   color: #507465 ;
 }
-main {
-  padding-top: 140px;
-}
+
 // ------------------------------------------
 .modal {
   display: block;
