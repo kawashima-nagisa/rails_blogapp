@@ -1,11 +1,10 @@
+@import "common";
 .section-top {
     position: relative;
     width: 100%;
     height: 900px;
-    // background: url(https://picsum.photos/seed/picsum/2800/1800) center/cover;
-    background: url(asset-path("header.webp")) top center;
+    background: url(asset-path("header.webp")) center/cover no-repeat;
     color: white;
-    background-size: 120%; 
    opacity: 0.8;
   }
 
@@ -14,7 +13,9 @@
     width: 50%;
     margin-inline: auto;
     transform: translateY(100%);
-    /* 初期状態でテキストを下に配置　最初は見えないようにするとのとのため */
+    @include mq(sp) {
+      width: 80%;
+    }
     &::-webkit-scrollbar {
       display: none;
     }
