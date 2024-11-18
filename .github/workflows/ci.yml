@@ -44,3 +44,8 @@ jobs:
 
       - name: Brakeman Check
         run: bundle exec brakeman
+
+      - name: Run RSpec Tests
+        env:
+          RAILS_ENV: test
+        run: bundle exec rspec
