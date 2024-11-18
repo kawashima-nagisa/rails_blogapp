@@ -18,26 +18,30 @@
       <%= f.text_field :name, class: "form-control", required: true, maxlength: 30, placeholder: "山田 太郎" %>
       <div class="invalid-feedback">ユーザー名を入力してください（30文字以内）。</div>
     </div>
-
     <!-- パスワード -->
-    <div class="mb-3" style="position: relative;">
+    <div class="mb-3">
       <%= f.label :password, "パスワード", class: "form-label text-secondary" %>
       <% if @minimum_password_length %>
       <small class="form-text text-muted">（<%= @minimum_password_length %>文字以上10文字以内）</small>
       <% end %>
-      <%= f.password_field :password, class: "form-control", id: "passwordField", autocomplete: "new-password", required: true, placeholder: "パスワード" %>
-      <i onclick="togglePasswordVisibility('passwordField', this)" class="bi bi-eye" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
-      <div class="invalid-feedback">パスワードを入力してください。</div>
+      <div class="input-group">
+        <%= f.password_field :password, class: "form-control", id: "passwordField", autocomplete: "new-password", required: true, placeholder: "パスワード" %>
+        <button type="button" onclick="togglePasswordVisibility('passwordField', this)" class="btn btn-outline-secondary">
+          <i class="bi bi-eye"></i>
+        </button>
+        <div class="invalid-feedback">パスワードを入力してください。</div>
+      </div>
     </div>
-
-    <!-- パスワード確認 -->
-    <div class="mb-3" style="position: relative;">
+    <div class="mb-3">
       <%= f.label :password_confirmation, "パスワードの確認", class: "form-label text-secondary" %>
-      <%= f.password_field :password_confirmation, class: "form-control", id: "passwordConfirmationField", autocomplete: "new-password", required: true, placeholder: "パスワード確認" %>
-      <i onclick="togglePasswordVisibility('passwordConfirmationField', this)" class="bi bi-eye" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
-      <div class="invalid-feedback">確認用のパスワードを入力してください。</div>
+      <div class="input-group">
+        <%= f.password_field :password_confirmation, class: "form-control", id: "passwordConfirmationField", autocomplete: "new-password", required: true, placeholder: "パスワード確認" %>
+        <button type="button" onclick="togglePasswordVisibility('passwordConfirmationField', this)" class="btn btn-outline-secondary">
+          <i class="bi bi-eye"></i>
+        </button>
+        <div class="invalid-feedback">確認用のパスワードを入力してください。</div>
+      </div>
     </div>
-
     <%= hidden_field_tag :recaptcha_token, nil, id: "recaptcha_token" %>
 
     <!-- 登録ボタン -->
@@ -53,8 +57,9 @@
 <script src="https://www.google.com/recaptcha/api.js?render=<%= Rails.application.credentials.dig(:recaptcha, :site_key) %>"></script>
 
 <script>
-  function togglePasswordVisibility(fieldId, icon) {
-    var field = document.getElementById(fieldId);
+  function togglePasswordVisibility(fieldId, button) {
+    const field = document.getElementById(fieldId);
+    const icon = button.querySelector("i");
     if (field.type === "password") {
       field.type = "text";
       icon.className = "bi bi-eye-slash";
