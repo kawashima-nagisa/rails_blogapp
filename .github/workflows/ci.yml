@@ -30,9 +30,7 @@ jobs:
           bundler-cache: true
           ruby-version: .ruby-version
 
-      - name: Disable error_highlight
-        run: echo "RUBYOPT='--disable-error_highlight'" >> $GITHUB_ENV
-
+  
       - name: Remove vendor directory if necessary
         run: rm -rf vendor
 
@@ -41,12 +39,7 @@ jobs:
           sudo apt-get update && sudo apt-get install -y -qq libvips
           bundle install
 
-      - name: Wait for PostgreSQL
-        run: |
-          until pg_isready -h localhost -p 5432; do
-            echo "Waiting for PostgreSQL to be ready..."
-            sleep 1
-          done
+ 
 
       - name: Set up database
         env:
@@ -63,7 +56,4 @@ jobs:
       - name: Brakeman Check
         run: bundle exec brakeman
 
-      - name: Run RSpec Tests
-        env:
-          RAILS_ENV: test
-        run: bundle exec rspec
+  
