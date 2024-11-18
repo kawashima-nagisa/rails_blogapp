@@ -19,24 +19,27 @@
     <div class="invalid-feedback">名前を入力してください（30文字以内）。</div>
   </div>
 
-  <!-- プロフィール画像 -->
   <div class="mb-3">
     <div class="dropzone dropzone-default dz-clickable" data-controller="dropzone" data-dropzone-max-file-size="5" data-dropzone-accepted-files="image/*" data-dropzone-max-files="2" data-upload-multiple="true">
+
       <%= f.file_field :profile_image, multiple: true, direct_upload: true, data: { dropzone_target: 'input' } %>
+
       <div class="dropzone-msg dz-message needsclick">
-        <h3 class="dropzone-msg-title">Drag here to upload or click here to browse</h3>
-        <span class="dropzone-msg-desc">2 MB file size maximum. Allowed file types png, jpg.</span>
+        <h3 class="dropzone-msg-title">こちらをクリックするか、画像をドロップしてください。</h3>
+        <span class="dropzone-msg-desc">画像形式がjpeg,png,webpのみアップロードできます。</span>
       </div>
     </div>
     <% if resource.profile_image.attached? %>
     <p>現在のプロフィール画像:</p>
     <%= image_tag resource.profile_image_as_thumbnail, class: "rounded-circle img-thumbnail" if resource.profile_image_as_thumbnail %>
+
     <div class="form-check mt-2">
       <%= f.check_box :remove_profile_image, class: "form-check-input" %>
       <%= f.label :remove_profile_image, "プロフィール画像を削除", class: "form-check-label" %>
     </div>
     <% end %>
   </div>
+
 
   <!-- SNSリンク (オプション) -->
   <div class="sns-link my-4">
@@ -100,3 +103,47 @@
       });
   })();
 </script>
+
+
+<style>
+  /* Dropzoneのスタイルを調整 */
+  .dropzone {
+    border: 2px dashed #007bff;
+    /* 青い枠線 */
+    border-radius: 10px;
+    /* 角を丸くする */
+    padding: 20px;
+    /* 内側の余白 */
+    background-color: #f8f9fa;
+    /* 背景色 */
+    text-align: center;
+    transition: background-color 0.3s ease;
+    /* ホバー効果のトランジション */
+  }
+
+  .dropzone:hover {
+    background-color: #e9ecef;
+    /* ホバー時の背景色 */
+  }
+
+  .dropzone-msg-title {
+    font-size: 1.25rem;
+    /* タイトルのフォントサイズ */
+    color: #007bff;
+    /* タイトルの色 */
+    font-weight: bold;
+  }
+
+  .dropzone-msg-desc {
+    font-size: 0.9rem;
+    /* 説明文のフォントサイズ */
+    color: #6c757d;
+    /* 説明文の色 */
+  }
+
+  img.rounded-circle.img-thumbnail {
+    max-width: 150px;
+    /* サムネイル画像のサイズ */
+    margin-top: 10px;
+  }
+</style>

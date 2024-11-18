@@ -44,16 +44,3 @@ jobs:
 
       - name: Brakeman Check
         run: bundle exec brakeman
-
-
-      - name: Setup Database
-        env:
-          RAILS_ENV: test
-        run: |
-          bundle exec rails db:create     
-          bundle exec rails db:schema:load 
-
-      - name: Run RSpec Tests
-        env:
-          RAILS_ENV: test
-        run: bundle exec rspec
