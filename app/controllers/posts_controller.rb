@@ -107,7 +107,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       format.html do
-        redirect_to posts_url, notice: "Post was successfully destroyed."
+        redirect_to posts_url, notice: "投稿は削除されました。"
       end
       format.json { head :no_content }
     end

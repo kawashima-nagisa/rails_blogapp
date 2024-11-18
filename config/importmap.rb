@@ -15,4 +15,3 @@ pin "stimulus-autocomplete" # @3.1.0
 pin "dropzone", to: "https://ga.jspm.io/npm:dropzone@6.0.0-beta.2/dist/dropzone.mjs"
 pin "just-extend", to: "https://ga.jspm.io/npm:just-extend@5.1.1/index.esm.js"
 pin "@rails/activestorage", to: "https://ga.jspm.io/npm:@rails/activestorage@7.0.3-1/app/assets/javascripts/activestorage.esm.js"
-pin "@rails/ujs", to: "@rails--ujs.js" # @7.1.3
