@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   get "u/:id", to: "users#profile", as: "user"
   resources :posts do
     resources :comments
-  endf
+  end
 
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 
