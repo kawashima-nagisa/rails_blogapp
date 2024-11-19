@@ -24,7 +24,7 @@ class CategoriesController < ApplicationController
       if @category.save
         format.html do
           redirect_to category_url(@category),
-            notice: "Category was successfully created."
+            notice: "カテゴリーを作成しました。"
         end
         format.json { render :show, status: :created, location: @category }
       else
@@ -42,7 +42,7 @@ class CategoriesController < ApplicationController
       if @category.update(category_params)
         format.html do
           redirect_to category_url(@category),
-            notice: "Category was successfully updated."
+            notice: "カテゴリーの更新をしました。"
         end
         format.json { render :show, status: :ok, location: @category }
       else
@@ -61,7 +61,7 @@ class CategoriesController < ApplicationController
     respond_to do |format|
       format.html do
         redirect_to categories_url,
-          notice: "Category was successfully destroyed."
+          notice: "カテゴリーの削除をしました。"
       end
       format.json { head :no_content }
     end

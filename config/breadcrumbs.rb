@@ -12,7 +12,6 @@ crumb :contact do
   link "Contacts", new_contact_form_path
 end
 
-
 # 各カテゴリーの詳細ページ（そのカテゴリーに属する投稿の一覧）
 crumb :category do |category|
   link "#{category.name}の投稿一覧", category_posts_path(category)

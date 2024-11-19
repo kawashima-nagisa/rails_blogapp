@@ -1,14 +1,25 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Categories</h1>
-
-<div id="categories">
-  <% @categories.each do |category| %>
-    <%= render category %>
-    <p>
-      <%= link_to "Show this category", category %>
-    </p>
+<div class="container my-4">
+  <!-- Notice表示 -->
+  <% if notice.present? %>
+  <div class="alert alert-success" role="alert">
+    <%= notice %>
+  </div>
   <% end %>
-</div>
 
-<%= link_to "New category", new_category_path %>
+  <!-- ページタイトル -->
+  <h1 class="mb-4">カテゴリー</h1>
+
+  <!-- カテゴリリスト -->
+  <div id="categories" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    <% @categories.each do |category| %>
+    <div class="col">
+      <%= render category %>
+    </div>
+    <% end %>
+  </div>
+
+  <!-- 新規カテゴリーリンク -->
+  <div class="mt-4">
+    <%= link_to "新しいカテゴリーを作る", new_category_path, class: "btn btn-primary" %>
+  </div>
+</div>

@@ -1,10 +1,13 @@
-<h1>Editing category</h1>
+<h1 class="text-center my-4">カテゴリーの編集</h1>
 
-<%= render "form", category: @category %>
+<div class="container col-md-8 col-lg-6 mx-auto">
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <%= render "form", category: @category %>
+    </div>
+  </div>
 
-<br>
-
-<div>
-  <%= link_to "Show this category", @category %> |
-  <%= link_to "Back to categories", categories_path %>
+  <div class="mt-4 d-flex justify-content-between">
+    <%= link_to "カテゴリー一覧に戻る", categories_path, class: "btn btn-outline-secondary" %>
+  </div>
 </div>
