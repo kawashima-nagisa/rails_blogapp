@@ -1,13 +1,13 @@
 <h2 class="text-center my-4">パスワードを忘れた場合</h2>
 
-<div class="container mx-auto" style="max-width: 400px;">
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: "needs-validation", novalidate: true }) do |f| %>
+<div class="container mx-auto card  py-3">
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: "needs-validation", novalidate: true }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <!-- メールアドレスフィールド -->
   <div class="mb-3">
     <%= f.label :email, "メールアドレス", class: "form-label" %>
-    <%= f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email", required: true %>
+    <%= f.email_field :email, class: "form-control ", autofocus: true, autocomplete: "email", required: true %>
     <div class="invalid-feedback">
       有効なメールアドレスを入力してください。
     </div>
@@ -15,22 +15,22 @@
 
   <!-- 送信ボタン -->
   <div class="d-grid gap-2">
-    <%= f.submit "パスワード再設定の案内を送信", class: "btn btn-primary" %>
+    <%= f.submit "パスワード再設定の案内を送信", class: "btn btn-primary col-9 mx-auto  col-md-5" %>
   </div>
-<% end %>
+  <% end %>
 
-<%= render "devise/shared/links" %>
+  <%= render "devise/shared/links" %>
 
 </div>
 
 <script>
   // Bootstrapのカスタムバリデーション
-  (function () {
+  (function() {
     'use strict'
     var forms = document.querySelectorAll('.needs-validation')
     Array.prototype.slice.call(forms)
-      .forEach(function (form) {
-        form.addEventListener('submit', function (event) {
+      .forEach(function(form) {
+        form.addEventListener('submit', function(event) {
           if (!form.checkValidity()) {
             event.preventDefault()
             event.stopPropagation()
