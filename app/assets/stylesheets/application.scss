@@ -337,3 +337,13 @@ canvas {
   margin-inline: auto;
  
 }
+
+.nav-item.dropdown {
+  @include mq(sp) {
+    li a {
+      font-size: 2.667vw;
+     }
+  }
+
+}
+ 
