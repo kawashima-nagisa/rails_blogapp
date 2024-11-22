@@ -24,16 +24,15 @@
   <!-- Date-fnsとアダプター -->
   <script src="https://cdn.jsdelivr.net/npm/date-fns@2.29.3/date-fns.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
-  <%
-=begin%>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
-  <%
-=end%>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
 
 </head>
 
-<body>
+<body <%= controller_name == "pages" && action_name == "about" ? 'data-turbo="false"' : "" %>>
+
   <%= turbo_frame_tag "modal" %>
 
   <header class="position-fixed z-3 w-100 top-0 start-0">

@@ -40,8 +40,10 @@ end
 
 # ユーザープロフィールページ
 crumb :user_profile do |user|
-  link "#{user.name}さんのプロフィール", user_path(user) # ユーザー名とリンク
-  parent :root
+  if user.present?
+    link "#{user.name}さんのプロフィール", user_path(user) # ユーザー名とリンク
+    parent :root
+  end
 end
 
 # ユーザープロフィール編集ページ

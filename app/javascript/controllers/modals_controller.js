@@ -7,12 +7,9 @@ export default class extends Controller {
     const modal = document.getElementById("modal");
 
     if (modal) {
-      modal.innerHTML = "";
-      modal.removeAttribute("src"); // src属性の削除（Turboフレームをリセット）
-      modal.removeAttribute("complete"); // complete属性の削除
-      setTimeout(() => {
-        window.location.reload();
-      }, 100);
+      modal.innerHTML = ""; // モーダル内容をリセット
+      modal.setAttribute("src", ""); // フレームのsrcを空にする
+      modal.removeAttribute("complete"); // complete属性を削除
     }
   }
 }

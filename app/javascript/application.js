@@ -7,9 +7,30 @@ import "@rails/actiontext";
 import "controllers";
 
 document.addEventListener("turbo:frame-missing", (event) => {
-  const {
-    detail: { response, visit },
-  } = event;
-  event.preventDefault();
-  visit(response.url); // 現在のURLにリダイレクト
+  console.log("turbo:frame-missing triggered");
+  const modal = document.getElementById("modal");
+  if (modal) {
+    console.log("Clearing modal content");
+    modal.innerHTML = ""; // 内容をクリア
+  } else {
+    console.log("Redirecting to response URL");
+    const {
+      detail: { response, visit },
+    } = event;
+    event.preventDefault();
+    visit(response.url);
+  }
 });
+document.addEventListener("turbo:before-cache", () => {
+  console.log("turbo:before-cache triggered");
+  const modal = document.getElementById("modal");
+  if (modal) {
+    console.log("Resetting modal attributes");
+    modal.innerHTML = ""; // フレームの内容をクリア
+    modal.removeAttribute("src"); // src属性を削除
+    modal.removeAttribute("complete"); // complete属性を削除
+  }
+});
+
+
+
