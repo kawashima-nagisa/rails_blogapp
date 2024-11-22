@@ -16,7 +16,6 @@ class CategoriesController < ApplicationController
   def edit
   end
 
-  
   def create
     @category = Category.new(category_params)
 
@@ -24,15 +23,15 @@ class CategoriesController < ApplicationController
       flash.now[:notice] = "投稿が成功しました"
       render turbo_stream: [
         turbo_stream.prepend(
-        "categories", # `categories`というIDを持つ要素に追加することを想定
-        partial: "categories/category", 
+          "categories", # `categories`というIDを持つ要素に追加することを想定
+          partial: "categories/category",
           locals: {
             category: @category
           }
         ),
         turbo_stream.replace("modal", ""), # 成功時にモーダルを閉じる
-        turbo_stream.update("flash", partial: "layouts/flash"), # フラッシュメッセージを表示
-        
+        turbo_stream.update("flash", partial: "layouts/flash") # フラッシュメッセージを表示
+
       ]
     else
       render turbo_stream:
