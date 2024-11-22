@@ -1,10 +1,10 @@
-<%= form_with(model: category, local: true, class: "p-4 bg-light rounded shadow-sm") do |form| %>
-<% if category.errors.any? %>
-<div class="alert alert-danger">
-  <h4><%= pluralize(category.errors.count, "エラー") %>があり、カテゴリーを保存できませんでした:</h4>
+<%= form_with(model: @category, data: { turbo_frame: "modal" }) do |form| %>
+<% if @category.errors.any? %>
+<div style="color: red; padding: 10px; border: 1px solid red; margin-bottom: 10px;">
+  <h2><%= pluralize(@category.errors.count, "error") %>が発生しました:</h2>
   <ul>
-    <% category.errors.each do |error| %>
-    <li><%= error.full_message %></li>
+    <% @category.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
     <% end %>
   </ul>
 </div>
@@ -15,7 +15,7 @@
   <%= form.text_field :name, class: "form-control", placeholder: "カテゴリー名を入力" %>
 </div>
 
-<div class="d-flex justify-content-end">
-  <%= form.submit "保存", class: "btn btn-primary" %>
+<div>
+  <%= form.submit @category.persisted? ? "Update category" : "Create Category", class: "btn btn-primary" %>
 </div>
 <% end %>

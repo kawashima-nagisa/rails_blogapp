@@ -1,9 +1,17 @@
-<div class="container mt-4">
+<%= turbo_frame_tag "modal" do %>
+<div class="modal">
   <h1 class="mb-4 text-center">新しいカテゴリーの作成</h1>
 
   <%= render "form", category: @category %>
 
-  <div class="mt-4 text-center">
-    <%= link_to "カテゴリー一覧に戻る", categories_path, class: "btn btn-secondary" %>
+  <br>
+
+  <!-- キャンセルボタン -->
+  <div>
+    <%= link_to "キャンセル", "#", data: {
+          controller: "modals",
+          action: "modals#close"
+        }, class: "cancel-button" %>
   </div>
 </div>
+<% end %>

@@ -13,6 +13,10 @@ application.register("autocomplete", AutocompleteController);
 import CalendarController from "./calendar_controller";
 application.register("calendar", CalendarController);
 
+import GsapController from "./gsap_controller";
+application.register("gsap", GsapController);
+
+
 
 
 import DropzoneController from "./dropzone_controller";

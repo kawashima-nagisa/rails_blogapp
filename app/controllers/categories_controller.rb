@@ -16,23 +16,34 @@ class CategoriesController < ApplicationController
   def edit
   end
 
-  # POST /categories or /categories.json
+  
   def create
     @category = Category.new(category_params)
 
-    respond_to do |format|
-      if @category.save
-        format.html do
-          redirect_to category_url(@category),
-            notice: "カテゴリーを作成しました。"
-        end
-        format.json { render :show, status: :created, location: @category }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json do
-          render json: @category.errors, status: :unprocessable_entity
-        end
-      end
+    if @category.save
+      flash.now[:notice] = "投稿が成功しました"
+      render turbo_stream: [
+        turbo_stream.prepend(
+        "categories", # `categories`というIDを持つ要素に追加することを想定
+        partial: "categories/category", 
+          locals: {
+            category: @category
+          }
+        ),
+        turbo_stream.replace("modal", ""), # 成功時にモーダルを閉じる
+        turbo_stream.update("flash", partial: "layouts/flash"), # フラッシュメッセージを表示
+        
+      ]
+    else
+      render turbo_stream:
+               turbo_stream.replace(
+                 "modal",
+                 partial: "posts/error",
+                 locals: {
+                   category: @post
+                 }
+               ),
+        status: :unprocessable_entity
     end
   end
 

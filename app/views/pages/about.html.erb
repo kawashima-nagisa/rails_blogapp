@@ -27,7 +27,7 @@
   </div>
 </section>
 
-<section class="section-top">
+<section class="section-top" data-controller="gsap">
 
   <section class="section-top-text">
 
@@ -119,42 +119,3 @@
   </div>
 
 </section>
-<script>
-  gsap.registerPlugin(ScrollTrigger);
-
-  // 背景スタイルの変更関数
-  function applyBackgroundStyle() {
-    document.querySelector(".section-top-text").style.backgroundColor = "rgba(36, 35, 35, 0.302)";
-  }
-
-  function removeBackgroundStyle() {
-    document.querySelector(".section-top-text").style.backgroundColor = "transparent";
-  }
-
-  // アニメーションを初期化する関数
-  function initAnimation() {
-    // 以前のScrollTriggerをクリア
-    ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-
-    // アニメーションの設定
-    gsap.to(".section-top-text__content", {
-      y: "-100%",
-      ease: "none",
-      scrollTrigger: {
-        trigger: ".section-top",
-        start: "top top",
-        end: () => "+=" + document.querySelector(".section-top-text__content").offsetHeight,
-        pin: ".section-top",
-        scrub: true,
-        onEnter: applyBackgroundStyle,
-        onLeave: removeBackgroundStyle,
-        onEnterBack: applyBackgroundStyle,
-        onLeaveBack: removeBackgroundStyle
-      }
-    });
-  }
-
-  // ページロードと再表示時にアニメーションを初期化
-  window.addEventListener("load", initAnimation);
-  document.addEventListener("turbo:load", initAnimation); // Turboリンクの対応（TurbolinksまたはTurbo Driveの場合）
-</script>
