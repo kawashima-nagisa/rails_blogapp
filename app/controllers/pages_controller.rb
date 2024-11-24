@@ -6,7 +6,7 @@ class PagesController < ApplicationController
   end
 
   def about
-    @articles = fetch_qiita_articles("nagisa-afadfadf") # QiitaユーザーIDに置き換えてください
+    @articles = fetch_qiita_articles("nagisa-afadfadf") 
   end
 
   private
