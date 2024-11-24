@@ -46,23 +46,51 @@ class CategoriesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /categories/1 or /categories/1.json
+
   def update
-    respond_to do |format|
-      if @category.update(category_params)
-        format.html do
-          redirect_to category_url(@category),
-            notice: "カテゴリーの更新をしました。"
-        end
-        format.json { render :show, status: :ok, location: @category }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json do
-          render json: @category.errors, status: :unprocessable_entity
-        end
-      end
+    if @category.update(category_params)
+      flash.now[:notice] = "更新が成功しました"
+      render turbo_stream: [
+        turbo_stream.replace(
+          "category_#{@category.id}",
+          partial: "categories/category",
+          locals: {
+            category: @category
+          }
+        ),
+        turbo_stream.replace("modal", ""), # 成功時にモーダルを閉じる
+        turbo_stream.update("flash", partial: "layouts/flash") # フラッシュメッセージを表示
+      ]
+    else
+      render turbo_stream:
+               turbo_stream.replace(
+                 "modal",
+                 partial: "posts/error",
+                 locals: {
+                   category: @category
+                 }
+               ),
+        status: :unprocessable_entity
     end
   end
+
+  # # PATCH/PUT /categories/1 or /categories/1.json
+  # def update
+  #   respond_to do |format|
+  #     if @category.update(category_params)
+  #       format.html do
+  #         redirect_to category_url(@category),
+  #           notice: "カテゴリーの更新をしました。"
+  #       end
+  #       format.json { render :show, status: :ok, location: @category }
+  #     else
+  #       format.html { render :edit, status: :unprocessable_entity }
+  #       format.json do
+  #         render json: @category.errors, status: :unprocessable_entity
+  #       end
+  #     end
+  #   end
+  # end
 
   # DELETE /categories/1 or /categories/1.json
   def destroy

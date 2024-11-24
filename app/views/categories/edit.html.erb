@@ -1,13 +1,20 @@
-<h1 class="text-center my-4">カテゴリーの編集</h1>
+<% breadcrumb :edit_user_profile %>
+<%= turbo_frame_tag "modal" do %>
+<div class="container">
+  <div class="modal">
+    <h1>カテゴリーの編集</h1>
 
-<div class="container col-md-8 col-lg-6 mx-auto">
-  <div class="card shadow-sm">
-    <div class="card-body">
-      <%= render "form", category: @category %>
+    <%= render "form", category: @category %>
+
+    <br>
+
+    <div>
+
+      <%= link_to "キャンセル", "#", data: {
+        controller: "modals",
+        action: "modals#close"
+      }, class: "cancel-button" %>
     </div>
   </div>
-
-  <div class="mt-4 d-flex justify-content-between">
-    <%= link_to "カテゴリー一覧に戻る", categories_path, class: "btn btn-outline-secondary" %>
-  </div>
 </div>
+<% end %>
