@@ -39,7 +39,7 @@ class CategoriesController < ApplicationController
                  "modal",
                  partial: "posts/error",
                  locals: {
-                   category: @post
+                   category: @category
                  }
                ),
         status: :unprocessable_entity
