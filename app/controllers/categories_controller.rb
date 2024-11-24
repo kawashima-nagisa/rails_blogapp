@@ -46,7 +46,6 @@ class CategoriesController < ApplicationController
     end
   end
 
-
   def update
     if @category.update(category_params)
       flash.now[:notice] = "更新が成功しました"
