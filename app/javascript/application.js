@@ -20,6 +20,12 @@ document.addEventListener("turbo:frame-missing", (event) => {
     event.preventDefault();
     visit(response.url);
   }
+    // Turboがレスポンスに失敗した場合、フルリダイレクト
+  const { detail: { response, visit } } = event;
+  if (response.url) {
+    event.preventDefault();
+    visit(response.url); // フルページリロード
+  }
 });
 document.addEventListener("turbo:before-cache", () => {
   console.log("turbo:before-cache triggered");
