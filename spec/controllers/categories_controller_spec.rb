@@ -48,7 +48,7 @@ RSpec.describe CategoriesController, type: :controller do
   describe "PATCH #update" do
     context "有効なデータの場合" do
       it "カテゴリが更新され、Turbo Streamで更新される" do
-        patch :update, params: { id: category.id, category: { name: "新しいカテゴリ名" } }, format: :turbo_stream
+        patch :update, params: {id: category.id, category: {name: "新しいカテゴリ名"}}, format: :turbo_stream
 
         expect(response.media_type).to eq("text/vnd.turbo-stream.html")
         expect(response.body).to include('<turbo-stream action="replace" target="category_')
