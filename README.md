@@ -40,6 +40,7 @@ MyBlogは、Ruby on Rails7を使用して作成したブログアプリケーシ
 - **Faker**：ダミーデータ生成（開発/テスト用）
 - **Brakeman**：セキュリティ分析ツール
 - **Letter Opener Web**：開発環境でのメール確認
+- **redcarpet**：マークダウン形式のテキストをHTMLに変換する
 
 ## テスト関連依存関係
 

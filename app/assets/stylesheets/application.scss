@@ -359,3 +359,19 @@ canvas {
   }
 }
  
+
+.card-body {
+  ul, li {
+    list-style: unset;
+  }
+  
+  pre {
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+  }
+  code {
+   color: #d63384;
+  }
+}
