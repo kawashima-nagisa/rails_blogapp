@@ -39,18 +39,19 @@ RSpec.describe CategoriesController, type: :controller do
           post :create, params: {category: category_params}
         }.to change(Category, :count).by(1)
 
-        expect(response).to redirect_to(category_path(assigns(:category)))
-        expect(flash[:notice]).to eq("Category was successfully created.")
+        expect(response.media_type).to eq("text/vnd.turbo-stream.html")
+        expect(response.body).to include('<turbo-stream action="prepend" target="categories">')
       end
     end
   end
 
   describe "PATCH #update" do
     context "有効なデータの場合" do
-      it "カテゴリが更新され、リダイレクトされる" do
-        patch :update, params: {id: category.id, category: {name: "新しいカテゴリ名"}}
-        expect(response).to redirect_to(category_path(category))
-        expect(flash[:notice]).to eq("Category was successfully updated.")
+      it "カテゴリが更新され、Turbo Streamで更新される" do
+        patch :update, params: { id: category.id, category: { name: "新しいカテゴリ名" } }, format: :turbo_stream
+
+        expect(response.media_type).to eq("text/vnd.turbo-stream.html")
+        expect(response.body).to include('<turbo-stream action="replace" target="category_')
         expect(category.reload.name).to eq("新しいカテゴリ名")
       end
     end
@@ -64,7 +65,7 @@ RSpec.describe CategoriesController, type: :controller do
       }.to change(Category, :count).by(-1)
 
       expect(response).to redirect_to(categories_path)
-      expect(flash[:notice]).to eq("Category was successfully destroyed.")
+      expect(flash[:notice]).to eq("カテゴリーの削除をしました。")
     end
   end
 end
