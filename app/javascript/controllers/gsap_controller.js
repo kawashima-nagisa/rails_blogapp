@@ -45,8 +45,26 @@ export default class extends Controller {
         end: () => "+=" + contentElement.offsetHeight,
         pin: ".section-top",
         scrub: true,
+        onEnter: () => this.applyBackgroundStyle(),
+        onLeave: () => this.removeBackgroundStyle(),
+        onEnterBack: () => this.applyBackgroundStyle(),
+        onLeaveBack: () => this.removeBackgroundStyle(),
       },
     });
+  }
+
+  applyBackgroundStyle() {
+    const sectionTopText = this.element.querySelector(".section-top-text");
+    if (sectionTopText) {
+      sectionTopText.style.backgroundColor = "rgba(36, 35, 35, 0.302)";
+    }
+  }
+
+  removeBackgroundStyle() {
+    const sectionTopText = this.element.querySelector(".section-top-text");
+    if (sectionTopText) {
+      sectionTopText.style.backgroundColor = "transparent";
+    }
   }
 
   onPageShow(event) {
