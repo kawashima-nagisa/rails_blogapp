@@ -12,7 +12,7 @@ class Comment < ApplicationRecord
   private
 
   def notify_recipient
-    Rails.logger.debug "Creating notification for post user: #{post.user.id}"
+    # Rails.logger.debug "Creating notification: post.user=#{post.user.id}, comment.user=#{user.id}"
     return if post.user == user
     CommentNotification.with(comment: self, post: post).deliver_later(post.user)
   end
