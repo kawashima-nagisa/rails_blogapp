@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :post do
-    title { Faker::Lorem.characters(number: 5) }  # タイトルが5文字以上になるよう設定
-    body { Faker::Lorem.paragraph }
+    title { "ValidTitle" } # 5文字以上10文字以内のタイトル
+    body { "This is a valid body text." } # 5～1000文字以内の本文
     association :user
     association :category
   end
