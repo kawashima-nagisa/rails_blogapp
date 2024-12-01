@@ -72,3 +72,7 @@ Shoulda::Matchers.configure do |config|
     with.library :rails
   end
 end
+
+require 'webmock/rspec'
+
+WebMock.disable_net_connect!(allow_localhost: true) # localhost へのリクエストは許可
