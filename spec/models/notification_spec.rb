@@ -1,6 +1,14 @@
 require "rails_helper"
 
 RSpec.describe Notification, type: :model do
+  describe "validations" do
+    it "shows error messages when recipient is nil" do
+      notification = Notification.new(recipient: nil, params: {})
+      notification.valid?
+      puts notification.errors[:type] # エラーメッセージを出力
+      puts notification.errors.full_messages # 全エラーメッセージを出力
+    end
+  end
   describe "associations" do
     it "belongs to a recipient" do
       association = described_class.reflect_on_association(:recipient)
