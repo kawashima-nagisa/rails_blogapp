@@ -23,7 +23,7 @@ RSpec.describe Notification, type: :model do
       notification = Notification.new(
         recipient: user,
         type: "CommentNotification",
-        params: { comment: "This is a comment" }
+        params: {comment: "This is a comment"}
       )
       expect(notification).to be_valid
     end
@@ -31,7 +31,7 @@ RSpec.describe Notification, type: :model do
     it "is invalid without a recipient" do
       notification = Notification.new(
         type: "CommentNotification",
-        params: { comment: "This is a comment" }
+        params: {comment: "This is a comment"}
       )
       expect(notification).not_to be_valid
       expect(notification.errors[:recipient]).to include("を入力してください")
@@ -41,7 +41,7 @@ RSpec.describe Notification, type: :model do
       user = create(:user)
       notification = Notification.new(
         recipient: user,
-        params: { comment: "This is a comment" }
+        params: {comment: "This is a comment"}
       )
       expect(notification).not_to be_valid
       expect(notification.errors[:type]).to include("を入力してください")
@@ -54,7 +54,7 @@ RSpec.describe Notification, type: :model do
       Notification.create(
         recipient: user,
         type: "CommentNotification",
-        params: { comment: "This is a comment" }
+        params: {comment: "This is a comment"}
       )
     end
 

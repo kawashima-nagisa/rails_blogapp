@@ -34,7 +34,7 @@ RSpec.describe PagesController, type: :controller do
         .to_return(
           status: 200,
           body: qiita_response.to_json,
-          headers: { "Content-Type" => "application/json" }
+          headers: {"Content-Type" => "application/json"}
         )
     end
 

@@ -4,8 +4,8 @@ RSpec.describe "About Page", type: :feature do
   before do
     # Qiita記事をモック化
     @mocked_articles = [
-      { "title" => "テスト記事1", "url" => "https://example.com/article1", "body" => "本文1", "created_at" => Time.now, "likes_count" => 5 },
-      { "title" => "テスト記事2", "url" => "https://example.com/article2", "body" => "本文2", "created_at" => Time.now, "likes_count" => 10 }
+      {"title" => "テスト記事1", "url" => "https://example.com/article1", "body" => "本文1", "created_at" => Time.now, "likes_count" => 5},
+      {"title" => "テスト記事2", "url" => "https://example.com/article2", "body" => "本文2", "created_at" => Time.now, "likes_count" => 10}
     ]
     allow_any_instance_of(PagesController).to receive(:fetch_qiita_articles).and_return(@mocked_articles)
   end

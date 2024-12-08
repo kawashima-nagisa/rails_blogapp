@@ -87,7 +87,7 @@ RSpec.describe User, type: :model do
   end
 
   # describe "profile image validations" do
-  #   let(:user) { build(:user) } 
+  #   let(:user) { build(:user) }
   #   it "is valid with a supported content type" do
   #     user.profile_image.attach(
   #       io: File.open(Rails.root.join("spec/fixtures/files/sample.jpg")),
@@ -126,7 +126,7 @@ RSpec.describe User, type: :model do
   end
 
   describe "#active?" do
-     let(:user) { build(:user) }
+    let(:user) { build(:user) }
     it "returns true if the user is active in the last 24 hours" do
       user.current_sign_in_at = 1.hour.ago
       expect(user.active?).to be_truthy
