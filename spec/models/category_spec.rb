@@ -24,7 +24,7 @@ RSpec.describe Category, type: :model do
 
     it "destroys associated posts when destroyed" do
       category = create(:category)
-      post = create(:post, category: category)
+      create(:post, category: category)
       expect { category.destroy }.to change { Post.count }.by(-1)
     end
   end
